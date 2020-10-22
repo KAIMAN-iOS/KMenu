@@ -13,7 +13,11 @@ public protocol Menuable {
     var completion: (() -> Void) { get }
 }
 
-public struct MenuItem {
+public struct MenuItem: Hashable, Equatable {
+    public static func == (lhs: MenuItem, rhs: MenuItem) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
     let title: String
     let image: UIImage?
     let completion: (() -> Void)
@@ -22,6 +26,10 @@ public struct MenuItem {
         self.title = item.title
         self.image = item.image
         self.completion = item.completion
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
     }
 }
 
@@ -62,17 +70,17 @@ extension AtaMenuItem: Menuable {
     public var image: UIImage? {
         switch self {
         case .user:             return nil
-        case .disconnect:       return nil
-        case .rideHistory:      return UIImage(named: "history")
-        case .terms:            return UIImage(named: "terms")
-        case .contact:          return UIImage(named: "contact")
-        case .vehicle:          return UIImage(named: "car")
-        case .licence:          return UIImage(named: "licence")
-        case .favourites:       return UIImage(named: "favourites")
-        case .alert:            return UIImage(named: "notification")
-        case .group:            return UIImage(named: "group")
-        case .expenseReport:    return UIImage(named: "expenseReport")
-        case .bluetooth:       return UIImage(named: "bluetooth")
+        case .disconnect:       return UIImage(named: "disconnect", in: .module, compatibleWith: nil)
+        case .rideHistory:      return UIImage(named: "history", in: .module, compatibleWith: nil)
+        case .terms:            return UIImage(named: "terms", in: .module, compatibleWith: nil)
+        case .contact:          return UIImage(named: "contact", in: .module, compatibleWith: nil)
+        case .vehicle:          return UIImage(named: "car", in: .module, compatibleWith: nil)
+        case .licence:          return UIImage(named: "licence", in: .module, compatibleWith: nil)
+        case .favourites:       return UIImage(named: "favourites", in: .module, compatibleWith: nil)
+        case .alert:            return UIImage(named: "notification", in: .module, compatibleWith: nil)
+        case .group:            return UIImage(named: "group", in: .module, compatibleWith: nil)
+        case .expenseReport:    return UIImage(named: "expenseReport", in: .module, compatibleWith: nil)
+        case .bluetooth:       return UIImage(named: "bluetooth", in: .module, compatibleWith: nil)
         }
     }
     
