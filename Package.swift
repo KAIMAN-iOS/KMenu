@@ -16,7 +16,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jonkykong/SideMenu", from: "6.5.0"),
-        .package(name: "KCoordinatorKit", url: "https://github.com/jerometonnelier/K-CoordinatorKit", from: "1.0.1"),
+        .package(url: "https://github.com/jerometonnelier/KCoordinatorKit", from: "1.0.1"),
         .package(url: "https://github.com/jerometonnelier/KExtensions", from: "1.0.0"),
     ],
     targets: [
