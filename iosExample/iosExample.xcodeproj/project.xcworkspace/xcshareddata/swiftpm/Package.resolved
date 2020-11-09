@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "KCoordinatorKit",
-        "repositoryURL": "https://github.com/jerometonnelier/K-CoordinatorKit",
+        "repositoryURL": "https://github.com/jerometonnelier/KCoordinatorKit",
         "state": {
           "branch": null,
           "revision": "20bb96f4f55c366fbeba61e97287bd6ee4a14d03",
@@ -17,15 +17,6 @@
           "branch": null,
           "revision": "43dd9976c8234987382d5c7780fd8c8992caa40a",
           "version": "1.0.14"
-        }
-      },
-      {
-        "package": "KMenu",
-        "repositoryURL": "https://github.com/jerometonnelier/KMenu.git",
-        "state": {
-          "branch": "master",
-          "revision": "12235e41c2c5ece04a311cf43e7d220c89fe8822",
-          "version": null
         }
       },
       {

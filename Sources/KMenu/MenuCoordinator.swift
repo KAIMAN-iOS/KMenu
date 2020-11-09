@@ -36,7 +36,7 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
         let presentationStyle = SideMenuPresentationStyle.menuSlideIn
         presentationStyle.backgroundColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)
         presentationStyle.onTopShadowOpacity = 1
-        presentationStyle.presentingScaleFactor = 0.9
+        presentationStyle.presentingScaleFactor = 1.0
         var settings = SideMenuSettings()
         settings.presentationStyle = presentationStyle
         settings.menuWidth = UIScreen.main.bounds.width * 0.9

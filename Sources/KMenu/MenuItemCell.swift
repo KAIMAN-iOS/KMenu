@@ -21,6 +21,6 @@ class MenuItemCell: UITableViewCell {
     
     func configure(_ item: MenuItem) {
         icon.image = item.image
-        name.set(text: item.title, for: FontType.custom(.body, traits: [.traitBold]), textColor: #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1))
+        name.set(text: item.title, for: FontType.custom(.callout, traits: [.traitBold]), textColor: #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1))
     }
 }
