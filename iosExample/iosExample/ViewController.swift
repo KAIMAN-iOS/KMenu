@@ -37,6 +37,15 @@ class ViewController: UIViewController {
             })),
             MenuItem(AtaMenuItem.disconnect(selectionCompletion: {
                 print("disconnect")
+            })),
+            MenuItem(AtaMenuItem.bluetooth(selectionCompletion: {
+                print("disconnect")
+            })),
+            MenuItem(AtaMenuItem.rideFlows(selectionCompletion: {
+                print("disconnect")
+            })),
+            MenuItem(AtaMenuItem.diagnosis(selectionCompletion: {
+                print("disconnect")
             }))
         ]
         let coord = MenuCoordinator<Int>(router: router, rootViewController: root, items: items, user: User(), appVersion: "version 23.980.0990889089")

@@ -47,6 +47,8 @@ public enum AtaMenuItem {
     case group(selectionCompletion: (() -> Void))
     case expenseReport(selectionCompletion: (() -> Void))
     case bluetooth(selectionCompletion: (() -> Void))
+    case rideFlows(selectionCompletion: (() -> Void))
+    case diagnosis(selectionCompletion: (() -> Void))
 }
 
 extension AtaMenuItem: Menuable {
@@ -64,6 +66,8 @@ extension AtaMenuItem: Menuable {
         case .group:            return NSLocalizedString("group", bundle: Bundle.module, comment: "group")
         case .expenseReport:    return NSLocalizedString("expenseReport", bundle: Bundle.module, comment: "expenseReport")
         case .bluetooth:        return NSLocalizedString("bluetooth", bundle: Bundle.module, comment: "bluetooth")
+        case .rideFlows:        return NSLocalizedString("rideFlows", bundle: Bundle.module, comment: "expenseReport")
+        case .diagnosis:        return NSLocalizedString("diagnosis", bundle: Bundle.module, comment: "bluetooth")
         }
     }
     
@@ -80,7 +84,9 @@ extension AtaMenuItem: Menuable {
         case .alert:            return UIImage(named: "notification", in: .module, compatibleWith: nil)
         case .group:            return UIImage(named: "group", in: .module, compatibleWith: nil)
         case .expenseReport:    return UIImage(named: "expenseReport", in: .module, compatibleWith: nil)
-        case .bluetooth:       return UIImage(named: "bluetooth", in: .module, compatibleWith: nil)
+        case .bluetooth:        return UIImage(named: "bluetooth", in: .module, compatibleWith: nil)
+        case .rideFlows:        return UIImage(named: "rideFlow", in: .module, compatibleWith: nil)
+        case .diagnosis:        return UIImage(named: "diagnosis", in: .module, compatibleWith: nil)
         }
     }
     
@@ -98,6 +104,8 @@ extension AtaMenuItem: Menuable {
         case .group(let selectionCompletion):           return selectionCompletion
         case .expenseReport(let selectionCompletion):   return selectionCompletion
         case .bluetooth(let selectionCompletion):       return selectionCompletion
+        case .rideFlows(let selectionCompletion):   return selectionCompletion
+        case .diagnosis(let selectionCompletion):       return selectionCompletion
         }
     }
     
