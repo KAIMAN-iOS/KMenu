@@ -35,6 +35,12 @@ class ViewController: UIViewController {
             MenuItem(AtaMenuItem.alert(selectionCompletion: {
                 print("User")
             })),
+            MenuItem(AtaMenuItem.group(selectionCompletion: {
+                print("User")
+            })),
+            MenuItem(AtaMenuItem.expenseReport(selectionCompletion: {
+                print("User")
+            })),
             MenuItem(AtaMenuItem.disconnect(selectionCompletion: {
                 print("disconnect")
             })),
