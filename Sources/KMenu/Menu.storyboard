@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -64,36 +65,48 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTG-Lc-R1F">
                                 <rect key="frame" x="0.0" y="44" width="414" height="146"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-i8-lWS">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-i8-lWS">
                                         <rect key="frame" x="30" y="15" width="369" height="110"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="glW-Q3-ypz">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
-                                                <color key="tintColor" name="textColor"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-OD-Tob">
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="55"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="glW-Q3-ypz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                                        <color key="tintColor" name="textColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="glW-Q3-ypz" secondAttribute="height" multiplier="1:1" id="Pfh-eQ-hfi"/>
+                                                            <constraint firstAttribute="width" constant="55" id="Sgm-Fn-7pQ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="glW-Q3-ypz" secondAttribute="height" multiplier="1:1" id="Pfh-eQ-hfi"/>
-                                                    <constraint firstAttribute="width" constant="55" id="Sgm-Fn-7pQ"/>
+                                                    <constraint firstItem="glW-Q3-ypz" firstAttribute="leading" secondItem="a7H-OD-Tob" secondAttribute="leading" id="72N-RM-Ssn"/>
+                                                    <constraint firstAttribute="bottom" secondItem="glW-Q3-ypz" secondAttribute="bottom" id="CRp-WD-7Th"/>
+                                                    <constraint firstItem="glW-Q3-ypz" firstAttribute="top" secondItem="a7H-OD-Tob" secondAttribute="top" id="ljP-uB-lLi"/>
                                                 </constraints>
-                                            </imageView>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dnQ-Nf-aiD">
-                                                <rect key="frame" x="0.0" y="64" width="140" height="46"/>
+                                                <rect key="frame" x="0.0" y="64" width="369" height="46"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-Wb-69f">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="26.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom Prénom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-7a-ENG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="26.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nom Prénom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-7a-ENG">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353.5" height="26.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                 <color key="textColor" name="selectedButtonColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="251" image="MenuNext" translatesAutoresizingMaskIntoConstraints="NO" id="Vgf-fx-l1d">
-                                                                <rect key="frame" x="132.5" y="0.0" width="7.5" height="26.5"/>
+                                                                <rect key="frame" x="361.5" y="0.0" width="7.5" height="26.5"/>
+                                                                <color key="tintColor" name="selectedButtonColor"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOn-8Z-Mhx">
-                                                        <rect key="frame" x="0.0" y="26.5" width="140" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="26.5" width="369" height="19.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <color key="textColor" name="selectedButtonColor"/>
                                                         <nil key="highlightedColor"/>
@@ -161,9 +174,9 @@
     </scenes>
     <resources>
         <image name="MenuNext" width="7.5" height="13.5"/>
-        <image name="expenseReport" width="21.5" height="21.5"/>
+        <image name="expenseReport" width="34" height="42"/>
         <namedColor name="backgroundColor">
-            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
