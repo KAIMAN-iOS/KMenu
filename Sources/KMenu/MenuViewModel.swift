@@ -9,7 +9,7 @@ import UIKit
 import TableViewExtension
 
 class MenuViewModel {
-    var items: [MenuItem]
+    var items: [MenuItem] = []
     init(items: [MenuItem]) {
         self.items = items
     }
@@ -34,11 +34,21 @@ class MenuViewModel {
     
     func dataSource(for tableView: UITableView) -> DataSource {
         let datasource = DataSource(tableView: tableView)  { (tableView, indexPath, model) -> UITableViewCell? in
-            guard let cell: MenuItemCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
-                return nil
+            switch model.displayType {
+            case .default:
+                guard let cell: MenuItemCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
+                    return nil
+                }
+                cell.configure(model)
+                return cell
+                
+            case .notice:
+                guard let cell: VersionCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
+                    return nil
+                }
+                cell.configure(model.title)
+                return cell
             }
-            cell.configure(model)
-            return cell
         }
         return datasource
     }

@@ -22,10 +22,9 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
     public init(router: RouterType,
                 rootViewController: UIViewController,
                 items: [MenuItem],
-                user: UserDataDisplayable?,
-                appVersion: String) {
+                user: UserDataDisplayable) {
         super.init(router: router)
-        menuController = MenuViewController.create(with: items, user: user, appVersion: appVersion)
+        menuController = MenuViewController.create(with: items, user: user)
         SideMenuManager.default.leftMenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
         SideMenuManager.default.addPanGestureToPresent(toView: router.navigationController.navigationBar)
@@ -46,3 +45,12 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
         return settings
     }
 }
+
+extension String {
+    func bundleLocale() -> String {
+        NSLocalizedString(self, bundle: .module, comment: self)
+    }
+}
+
+
+

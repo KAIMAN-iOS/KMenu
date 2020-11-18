@@ -10,14 +10,12 @@ import SideMenu
 import FontExtension
 
 class MenuViewController: UIViewController {
-    static func create(with items: [MenuItem], user: UserDataDisplayable?, appVersion: String) -> MenuViewController {
+    static func create(with items: [MenuItem], user: UserDataDisplayable?) -> MenuViewController {
         let ctrl: MenuViewController = UIStoryboard(name: "Menu", bundle: Bundle.module).instantiateViewController(identifier: "MenuViewController")
         ctrl.items = items
         ctrl.user = user
-        ctrl.appVersion = appVersion
         return ctrl
     }
-    var appVersion: String = ""
     var user: UserDataDisplayable?
     var items: [MenuItem] = []  {
         didSet {
@@ -36,7 +34,6 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var licence: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
-    @IBOutlet weak var version: UILabel!
     
     lazy var dataSource = viewModel.dataSource(for: tableView)
     override func viewDidLoad() {
@@ -62,7 +59,6 @@ class MenuViewController: UIViewController {
         name.set(text: user.username, for: FontType.title, textColor: .white)
         licence.set(text: user.licence, for: FontType.custom(.caption1, traits: nil), textColor: UIColor.white.withAlphaComponent(0.75))
         licence.isHidden = user.licence == nil
-        version.text = appVersion
     }
     
     @IBAction func showUser() {
