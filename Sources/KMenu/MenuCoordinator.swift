@@ -8,6 +8,7 @@
 import UIKit
 import KCoordinatorKit
 import SideMenu
+import ATAConfiguration
 
 public protocol UserDataDisplayable {
     var username: String { get }
@@ -22,9 +23,10 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
     public init(router: RouterType,
                 rootViewController: UIViewController,
                 items: [MenuItem],
-                user: UserDataDisplayable) {
+                user: UserDataDisplayable,
+                conf: ATAConfiguration) {
         super.init(router: router)
-        menuController = MenuViewController.create(with: items, user: user)
+        menuController = MenuViewController.create(with: items, user: user, conf: conf)
         SideMenuManager.default.leftMenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
         SideMenuManager.default.addPanGestureToPresent(toView: router.navigationController.navigationBar)

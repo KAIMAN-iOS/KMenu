@@ -8,12 +8,15 @@
 import UIKit
 import SideMenu
 import FontExtension
+import ATAConfiguration
 
 class MenuViewController: UIViewController {
-    static func create(with items: [MenuItem], user: UserDataDisplayable?) -> MenuViewController {
+    static var configuration: ATAConfiguration!
+    static func create(with items: [MenuItem], user: UserDataDisplayable?, conf: ATAConfiguration) -> MenuViewController {
         let ctrl: MenuViewController = UIStoryboard(name: "Menu", bundle: Bundle.module).instantiateViewController(identifier: "MenuViewController")
         ctrl.items = items
         ctrl.user = user
+        MenuViewController.configuration = conf
         return ctrl
     }
     var user: UserDataDisplayable?
@@ -43,6 +46,7 @@ class MenuViewController: UIViewController {
         viewModel.applySnapshot(in: dataSource)
         handleUserData()
         tableView.tableFooterView = UIView()
+        view.backgroundColor = MenuViewController.configuration.palette.primary
     }
     
     func handleUserData() {
@@ -54,7 +58,7 @@ class MenuViewController: UIViewController {
         icon.layer.borderWidth = 2.0
         icon.layer.borderColor = UIColor.white.cgColor
         icon.clipsToBounds = true
-        icon.backgroundColor = #colorLiteral(red: 0.6176490188, green: 0.6521512866, blue: 0.7114837766, alpha: 1)
+        icon.backgroundColor = MenuViewController.configuration.palette.inactive
         icon.image = user.picture ?? UIImage(named: "taxiDriver", in: .module, with: nil)
         name.set(text: user.username, for: FontType.title, textColor: .white)
         licence.set(text: user.licence, for: FontType.custom(.caption1, traits: nil), textColor: UIColor.white.withAlphaComponent(0.75))
