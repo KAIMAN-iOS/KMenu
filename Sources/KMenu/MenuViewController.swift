@@ -10,6 +10,15 @@ import SideMenu
 import FontExtension
 import ATAConfiguration
 
+extension UINavigationController {
+    open override var prefersStatusBarHidden: Bool {
+        return presentedViewController?.prefersStatusBarHidden ?? (topViewController?.prefersStatusBarHidden ?? true)
+    }
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return presentedViewController?.preferredStatusBarUpdateAnimation ?? (topViewController?.preferredStatusBarUpdateAnimation ?? .fade)
+    }
+}
+    
 class MenuViewController: UIViewController {
     static var configuration: ATAConfiguration!
     static func create(with items: [MenuItem], user: UserDataDisplayable?, conf: ATAConfiguration) -> MenuViewController {
@@ -38,9 +47,17 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var licence: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
     
+    var statusFrameHidden: Bool = true
+    override var prefersStatusBarHidden: Bool { statusFrameHidden }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { .slide }
+    
     lazy var dataSource = viewModel.dataSource(for: tableView)
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIView.animate(withDuration: 0.3) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+        SideMenuManager.default.leftMenuNavigationController?.sideMenuDelegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.dataSource = dataSource
         viewModel.applySnapshot(in: dataSource)
@@ -67,6 +84,22 @@ class MenuViewController: UIViewController {
     
     @IBAction func showUser() {
         user?.completion()
+    }
+}
+
+extension MenuViewController: SideMenuNavigationControllerDelegate {
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+        statusFrameHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        statusFrameHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
     }
 }
 

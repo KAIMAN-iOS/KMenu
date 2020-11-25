@@ -33,7 +33,6 @@ class Palette: Palettable {
     
 }
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -48,6 +47,7 @@ class ViewController: UIViewController {
         }
     }
 
+    var child: UIViewController!
     @IBAction func show(_ sender: Any) {
         let root = RootViewController.create()
         let router = Router(navigationController: UINavigationController(rootViewController: root))
@@ -79,6 +79,7 @@ class ViewController: UIViewController {
         ]
         let coord = MenuCoordinator<Int>(router: router, rootViewController: root, items: items, user: User(), conf: Configuration())
         let controller = coord.toPresentable()
+        child = controller
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
     }

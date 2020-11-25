@@ -13,6 +13,7 @@ class RootViewController: UIViewController {
     static func create() -> RootViewController {
         return RootViewController.loadFromStoryboard(identifier: "RootViewController", storyboardName: "Main")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let menu = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showMenu))
