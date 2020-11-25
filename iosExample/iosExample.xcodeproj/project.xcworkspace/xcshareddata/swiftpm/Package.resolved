@@ -11,6 +11,24 @@
         }
       },
       {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "EasyNotificationBadge",
+        "repositoryURL": "https://github.com/Minitour/EasyNotificationBadge",
+        "state": {
+          "branch": null,
+          "revision": "800a95d7dfc01dcf4c7d03e839fdbf101d9fcb6a",
+          "version": "1.2.3"
+        }
+      },
+      {
         "package": "KCoordinatorKit",
         "repositoryURL": "https://github.com/jerometonnelier/KCoordinatorKit",
         "state": {

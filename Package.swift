@@ -19,12 +19,14 @@ let package = Package(
         .package(url: "https://github.com/jerometonnelier/KCoordinatorKit", from: "1.0.1"),
         .package(url: "https://github.com/jerometonnelier/KExtensions", from: "1.0.0"),
         .package(url: "https://github.com/jerometonnelier/ATAConfiguration", from: "1.0.0"),
+        .package(url: "https://github.com/evgenyneu/Cosmos", from: "23.0.0"),
+        .package(url: "https://github.com/Minitour/EasyNotificationBadge", from: "1.2.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "KMenu",
-            dependencies: ["SideMenu", "KCoordinatorKit", "KExtensions", "ATAConfiguration"])
+            dependencies: ["SideMenu", "KCoordinatorKit", "KExtensions", "ATAConfiguration", "Cosmos"])
     ]
 )

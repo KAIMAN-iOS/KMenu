@@ -8,7 +8,29 @@
 import UIKit
 import SideMenu
 import FontExtension
+import LabelExtension
 import ATAConfiguration
+
+class ItemButton: UIButton {
+    var item: MenuItem
+    
+    init(item: MenuItem) {
+        self.item = item
+        super.init(frame: .zero)
+        titleLabel?.font = FontType.custom(.title2, traits: nil).font
+        contentHorizontalAlignment = .left
+        setTitleColor(MenuViewController.configuration.palette.textOnPrimary, for: .normal)
+        setTitle(item.title, for: .normal)
+    }
+    
+    func update() {
+//        titleLabel?.set(text: item.title, for: FontType.custom(.title2, traits: nil), textColor: MenuViewController.configuration.palette.textOnPrimary)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
 
 extension UINavigationController {
     open override var prefersStatusBarHidden: Bool {
@@ -21,7 +43,9 @@ extension UINavigationController {
     
 class MenuViewController: UIViewController {
     static var configuration: ATAConfiguration!
-    static func create(with items: [MenuItem], user: UserDataDisplayable?, conf: ATAConfiguration) -> MenuViewController {
+    static func create(with items: [MenuItem],
+                       user: UserDataDisplayable?,
+                       conf: ATAConfiguration) -> MenuViewController {
         let ctrl: MenuViewController = UIStoryboard(name: "Menu", bundle: Bundle.module).instantiateViewController(identifier: "MenuViewController")
         ctrl.items = items
         ctrl.user = user
@@ -31,7 +55,7 @@ class MenuViewController: UIViewController {
     var user: UserDataDisplayable?
     var items: [MenuItem] = []  {
         didSet {
-            viewModel = MenuViewModel(items: items)
+            viewModel = MenuViewModel(items: items.filter({ $0.displayType != .important }))
         }
     }
     var viewModel: MenuViewModel!
@@ -44,7 +68,6 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var licence: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
     
     var statusFrameHidden: Bool = true
@@ -59,11 +82,27 @@ class MenuViewController: UIViewController {
         }
         SideMenuManager.default.leftMenuNavigationController?.sideMenuDelegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
+        loadImportantItems()
         tableView.dataSource = dataSource
         viewModel.applySnapshot(in: dataSource)
         handleUserData()
         tableView.tableFooterView = UIView()
-        view.backgroundColor = MenuViewController.configuration.palette.primary
+        view.backgroundColor = MenuViewController.configuration.palette.mainTexts
+    }
+    
+    func loadImportantItems() {
+        items.filter({ $0.displayType == .important }).forEach { item in
+            let button = ItemButton(item: item)
+            button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            button.addTarget(self, action: #selector(handleTapOn(_:)), for: .touchUpInside)
+            userStackView.addArrangedSubview(button)
+            userStackView.setCustomSpacing(5, after: button)
+            button.update()
+        }
+    }
+    
+    @objc func handleTapOn(_ button: ItemButton) {
+        button.item.completion()
     }
     
     func handleUserData() {
@@ -77,9 +116,7 @@ class MenuViewController: UIViewController {
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.inactive
         icon.image = user.picture ?? UIImage(named: "taxiDriver", in: .module, with: nil)
-        name.set(text: user.username, for: FontType.title, textColor: .white)
-        licence.set(text: user.licence, for: FontType.custom(.caption1, traits: nil), textColor: UIColor.white.withAlphaComponent(0.75))
-        licence.isHidden = user.licence == nil
+        name.set(text: user.username, for: FontType.custom(.title1, traits: nil), textColor: .white)
     }
     
     @IBAction func showUser() {

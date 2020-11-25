@@ -48,7 +48,17 @@ class MenuViewModel {
                 }
                 cell.configure(model.title)
                 return cell
+                
+            case .button:
+                guard let cell: MenuButtonCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
+                    return nil
+                }
+                cell.configure(model)
+                return cell
+                
+            default: return nil
             }
+            
         }
         return datasource
     }

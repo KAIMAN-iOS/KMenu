@@ -16,14 +16,14 @@ class Configuration: ATAConfiguration {
 }
 
 class Palette: Palettable {
-    var primary: UIColor { #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1) }
-    var secondary: UIColor { #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1) }
+    var primary: UIColor { #colorLiteral(red: 0.8604696393, green: 0, blue: 0.1966537535, alpha: 1) }
+    var secondary: UIColor { #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1) }
     
-    var mainTexts: UIColor { #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1) }
+    var mainTexts: UIColor { #colorLiteral(red: 0.1879811585, green: 0.1879865527, blue: 0.1879836619, alpha: 1) }
     
-    var secondaryTexts: UIColor { #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1) }
+    var secondaryTexts: UIColor { #colorLiteral(red: 0.1565656662, green: 0.1736218631, blue: 0.2080874145, alpha: 1) }
     
-    var textOnPrimary: UIColor { #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) }
+    var textOnPrimary: UIColor { #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) }
     
     var inactive: UIColor { #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1) }
     
@@ -55,26 +55,23 @@ class ViewController: UIViewController {
             MenuItem(AtaMenuItem.vehicle(selectionCompletion: {
                 print("vehicle")
             })),
-            MenuItem(AtaMenuItem.alert(selectionCompletion: {
-                print("User")
-            })),
             MenuItem(AtaMenuItem.group(selectionCompletion: {
-                print("User")
+                print("group")
             })),
-            MenuItem(AtaMenuItem.expenseReport(selectionCompletion: {
-                print("User")
+            MenuItem(AtaMenuItem.myBookings(selectionCompletion: {
+                print("group")
             })),
-            MenuItem(AtaMenuItem.disconnect(selectionCompletion: {
-                print("disconnect")
+            MenuItem(AtaMenuItem.messages(selectionCompletion: {
+                print("group")
             })),
-            MenuItem(AtaMenuItem.bluetooth(selectionCompletion: {
-                print("disconnect")
+            MenuItem(AtaMenuItem.contact(selectionCompletion: {
+                print("alert")
             })),
-            MenuItem(AtaMenuItem.rideFlows(selectionCompletion: {
-                print("disconnect")
+            MenuItem(AtaMenuItem.legalNotice(appVersion: "6.6.6.", selectionCompletion: {
+                print("alert")
             })),
-            MenuItem(AtaMenuItem.diagnosis(selectionCompletion: {
-                print("disconnect")
+            MenuItem(AtaMenuItem.alert(selectionCompletion: {
+                print("alert")
             }))
         ]
         let coord = MenuCoordinator<Int>(router: router, rootViewController: root, items: items, user: User(), conf: Configuration())
