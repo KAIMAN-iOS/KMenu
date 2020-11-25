@@ -50,6 +50,7 @@ public enum AtaMenuItem {
     case group(selectionCompletion: (() -> Void))
     case parameters(selectionCompletion: (() -> Void))
     case messages(selectionCompletion: (() -> Void))
+    case rideFlows(selectionCompletion: (() -> Void))
     case legalNotice(appVersion: String, selectionCompletion: (() -> Void))
 }
 
@@ -67,6 +68,7 @@ extension AtaMenuItem: Menuable {
         case .favourites:                   return NSLocalizedString("favourites", bundle: Bundle.module, comment: "favourites")
         case .alert:                        return NSLocalizedString("alert", bundle: Bundle.module, comment: "alert")
         case .group:                        return NSLocalizedString("group", bundle: Bundle.module, comment: "group")
+        case .rideFlows:                    return NSLocalizedString("rideFlows", bundle: Bundle.module, comment: "rideFlows")
         case .legalNotice(let version, _):  return  NSLocalizedString("Legal notice", bundle: Bundle.module, comment: "Legal notice") + " - " + version
         }
     }
@@ -85,6 +87,7 @@ extension AtaMenuItem: Menuable {
         case .alert(let selectionCompletion):           return selectionCompletion
         case .group(let selectionCompletion):           return selectionCompletion
         case .legalNotice(_, let selectionCompletion):  return selectionCompletion
+        case .rideFlows(let selectionCompletion):       return selectionCompletion
         }
     }
     
