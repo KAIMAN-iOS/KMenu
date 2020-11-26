@@ -18,7 +18,12 @@ public protocol UserDataDisplayable {
 }
 
 public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
-    
+    public var menuImage: UIImage?  {
+        didSet {
+            guard let image = menuImage else { return }
+            menuController.bottomImage.image = image
+        }
+    }
     var menuController: MenuViewController!
     public init(router: RouterType,
                 rootViewController: UIViewController,

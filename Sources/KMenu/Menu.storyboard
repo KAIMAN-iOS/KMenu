@@ -191,7 +191,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-ra-IXg">
                                 <rect key="frame" x="0.0" y="828" width="414" height="68"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ATA" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-Ci-lUc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyCloudATA" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-Ci-lUc">
                                         <rect key="frame" x="25" y="8" width="363" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="uZ4-k4-DSb"/>
@@ -225,6 +225,7 @@
                     <navigationItem key="navigationItem" id="P8y-N3-MGl"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bottomImage" destination="tMb-Ci-lUc" id="fff-fb-6VP"/>
                         <outlet property="icon" destination="glW-Q3-ypz" id="Mlw-SB-xSj"/>
                         <outlet property="name" destination="5pv-7a-ENG" id="fPM-3P-O41"/>
                         <outlet property="tableView" destination="jVY-p1-n29" id="IaQ-1e-Q9x"/>
@@ -237,12 +238,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ATA" width="1027.5" height="288.5"/>
+        <image name="MyCloudATA" width="942" height="99"/>
         <namedColor name="backgroundColor">
             <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
-            <color red="0.94901960780000005" green="0.68235294120000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

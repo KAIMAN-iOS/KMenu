@@ -66,6 +66,7 @@ class MenuViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var bottomImage: UIImageView!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
