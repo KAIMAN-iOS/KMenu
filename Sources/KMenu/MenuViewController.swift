@@ -10,6 +10,8 @@ import SideMenu
 import FontExtension
 import LabelExtension
 import ATAConfiguration
+import Cosmos
+import Ampersand
 
 class ItemButton: UIButton {
     var item: MenuItem
@@ -17,7 +19,7 @@ class ItemButton: UIButton {
     init(item: MenuItem) {
         self.item = item
         super.init(frame: .zero)
-        titleLabel?.font = FontType.custom(.title2, traits: nil).font
+        titleLabel?.font = .applicationFont(forTextStyle: .title2)
         contentHorizontalAlignment = .left
         setTitleColor(MenuViewController.configuration.palette.textOnPrimary, for: .normal)
         setTitle(item.title, for: .normal)
@@ -70,6 +72,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
+    @IBOutlet weak var rating: CosmosView!
     
     var statusFrameHidden: Bool = true
     override var prefersStatusBarHidden: Bool { statusFrameHidden }
@@ -117,7 +120,7 @@ class MenuViewController: UIViewController {
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.inactive
         icon.image = user.picture ?? UIImage(named: "taxiDriver", in: .module, with: nil)
-        name.set(text: user.username, for: FontType.custom(.title1, traits: nil), textColor: .white)
+        name.set(text: user.username, for: .title1, textColor: .white)
     }
     
     @IBAction func showUser() {

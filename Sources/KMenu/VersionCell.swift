@@ -13,6 +13,6 @@ class VersionCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     
     func configure(_ version: String) {
-        label.set(text: version, for: FontType.custom(.caption2, traits: nil), textColor: MenuViewController.configuration.palette.mainTexts)
+        label.set(text: version, for: .caption2, textColor: MenuViewController.configuration.palette.mainTexts)
     }
 }

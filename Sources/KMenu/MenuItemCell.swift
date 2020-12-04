@@ -19,6 +19,6 @@ class MenuItemCell: UITableViewCell {
     }
     
     func configure(_ item: MenuItem) {
-        name.set(text: item.title, for: FontType.custom(.title2, traits: nil), textColor: MenuViewController.configuration.palette.mainTexts)
+        name.set(text: item.title, for: .title2, textColor: MenuViewController.configuration.palette.mainTexts)
     }
 }

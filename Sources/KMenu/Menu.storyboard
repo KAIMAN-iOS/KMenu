@@ -71,13 +71,16 @@
                                                                         <color key="value" name="selectedButtonColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" name="textColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
                                                                         <color key="value" name="selectedButtonColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
                                                                         <real key="value" value="2.7000000000000002"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                                                        <color key="value" name="selectedButtonColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -228,6 +231,7 @@
                         <outlet property="bottomImage" destination="tMb-Ci-lUc" id="fff-fb-6VP"/>
                         <outlet property="icon" destination="glW-Q3-ypz" id="Mlw-SB-xSj"/>
                         <outlet property="name" destination="5pv-7a-ENG" id="fPM-3P-O41"/>
+                        <outlet property="rating" destination="d1s-U0-G5o" id="Hkd-Ge-7X9"/>
                         <outlet property="tableView" destination="jVY-p1-n29" id="IaQ-1e-Q9x"/>
                         <outlet property="userStackView" destination="Y7t-i8-lWS" id="ab4-Ud-Wgd"/>
                     </connections>
@@ -240,7 +244,7 @@
     <resources>
         <image name="MyCloudATA" width="942" height="99"/>
         <namedColor name="backgroundColor">
-            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
             <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -249,7 +253,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
