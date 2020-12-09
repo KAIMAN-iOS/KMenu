@@ -9,6 +9,7 @@ import UIKit
 import KCoordinatorKit
 import KMenu
 import ATAConfiguration
+import Ampersand
 
 class Configuration: ATAConfiguration {
     var logo: UIImage? { nil }
@@ -35,6 +36,8 @@ class Palette: Palettable {
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let configurationURL = Bundle.main.url(forResource: "Poppins", withExtension: "json")!
+        UIFont.registerApplicationFont(withConfigurationAt: configurationURL)
         // Do any additional setup after loading the view.
     }
     

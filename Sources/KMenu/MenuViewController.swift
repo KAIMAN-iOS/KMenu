@@ -19,9 +19,11 @@ class ItemButton: UIButton {
     init(item: MenuItem) {
         self.item = item
         super.init(frame: .zero)
-        titleLabel?.font = .applicationFont(forTextStyle: .title2)
+        titleLabel?.font = .applicationFont(forTextStyle: .title3)
         contentHorizontalAlignment = .left
         setTitleColor(MenuViewController.configuration.palette.textOnPrimary, for: .normal)
+        setTitleColor(MenuViewController.configuration.palette.placeholder, for: .highlighted)
+        setTitleColor(MenuViewController.configuration.palette.placeholder, for: .selected)
         setTitle(item.title, for: .normal)
     }
     
@@ -72,7 +74,14 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
-    @IBOutlet weak var rating: CosmosView!
+    @IBOutlet weak var rating: CosmosView!  {
+        didSet {
+            var settings: CosmosSettings = rating.settings
+            settings.fillMode = .precise
+            rating.settings = settings
+        }
+    }
+
     
     var statusFrameHidden: Bool = true
     override var prefersStatusBarHidden: Bool { statusFrameHidden }
@@ -115,7 +124,7 @@ class MenuViewController: UIViewController {
             return
         }
         icon.layer.cornerRadius = icon.bounds.midX
-        icon.layer.borderWidth = 2.0
+        icon.layer.borderWidth = 0.8
         icon.layer.borderColor = UIColor.white.cgColor
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.inactive
