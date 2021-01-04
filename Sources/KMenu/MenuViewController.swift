@@ -37,6 +37,9 @@ class ItemButton: UIButton {
 }
 
 extension UINavigationController {
+    open override var childForStatusBarHidden: UIViewController? {
+        presentedViewController ?? viewControllers.last
+    }
     open override var prefersStatusBarHidden: Bool {
         return presentedViewController?.prefersStatusBarHidden ?? (topViewController?.prefersStatusBarHidden ?? true)
     }
