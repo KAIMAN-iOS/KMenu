@@ -109,7 +109,7 @@ class MenuViewController: UIViewController {
     func loadImportantItems() {
         items.filter({ $0.displayType == .important }).forEach { item in
             let button = ItemButton(item: item)
-            button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            button.contentEdgeInsets = UIEdgeInsets(top: 10, left: -2, bottom: 10, right: 10)
             button.addTarget(self, action: #selector(handleTapOn(_:)), for: .touchUpInside)
             userStackView.addArrangedSubview(button)
             userStackView.setCustomSpacing(5, after: button)

@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="115"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-i8-lWS">
-                                        <rect key="frame" x="30" y="15" width="364" height="70"/>
+                                        <rect key="frame" x="38" y="15" width="356" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fJh-ge-zSU">
                                                 <rect key="frame" x="0.0" y="0.0" width="202.5" height="70"/>
@@ -32,15 +32,15 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-OD-Tob">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="glW-Q3-ypz">
-                                                                <rect key="frame" x="0.0" y="3" width="70" height="64"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="glW-Q3-ypz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                                 <color key="backgroundColor" name="textOnPrimary"/>
                                                                 <color key="tintColor" name="textColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="glW-Q3-ypz" secondAttribute="height" multiplier="1:1" id="Pfh-eQ-hfi"/>
                                                                     <constraint firstAttribute="width" constant="70" id="Sgm-Fn-7pQ"/>
                                                                 </constraints>
-                                                                <imageReference key="image" image="person.fill" catalog="system" symbolScale="small"/>
+                                                                <imageReference key="image" image="taxiDriver" symbolScale="small"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </imageView>
                                                         </subviews>
@@ -95,7 +95,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-NT-66V">
-                                        <rect key="frame" x="30" y="15" width="364" height="70"/>
+                                        <rect key="frame" x="38" y="15" width="356" height="70"/>
                                         <connections>
                                             <action selector="showUser" destination="H3f-8v-TYS" eventType="touchUpInside" id="Qy2-5p-fX4"/>
                                         </connections>
@@ -103,7 +103,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Y7t-i8-lWS" firstAttribute="leading" secondItem="RTG-Lc-R1F" secondAttribute="leading" constant="30" id="C8A-no-ITG"/>
+                                    <constraint firstItem="Y7t-i8-lWS" firstAttribute="leading" secondItem="RTG-Lc-R1F" secondAttribute="leading" constant="38" id="C8A-no-ITG"/>
                                     <constraint firstAttribute="trailing" secondItem="Y7t-i8-lWS" secondAttribute="trailing" constant="20" id="Fdl-KJ-hM6"/>
                                     <constraint firstItem="0ra-NT-66V" firstAttribute="bottom" secondItem="Okb-Wb-69f" secondAttribute="bottom" id="H14-No-oCC"/>
                                     <constraint firstItem="Y7t-i8-lWS" firstAttribute="top" secondItem="RTG-Lc-R1F" secondAttribute="top" constant="15" id="Uq8-Bu-qzJ"/>
@@ -177,9 +177,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmd-Pm-KND">
-                                                    <rect key="frame" x="40" y="14" width="76" height="30"/>
+                                                    <rect key="frame" x="40" y="14" width="66" height="30"/>
                                                     <color key="backgroundColor" name="button"/>
-                                                    <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                             </subviews>
@@ -246,19 +246,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MyCloudATA" width="942" height="99"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="MyCloudATA" width="990" height="99"/>
+        <image name="taxiDriver" width="83.5" height="82.5"/>
         <namedColor name="backgroundColor">
             <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
-            <color red="0.94509803921568625" green="0.67843137254901964" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textOnPrimary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

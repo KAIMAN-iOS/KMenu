@@ -13,9 +13,10 @@ class MenuButtonCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     
     func configure(_ item: MenuItem) {
-        button.titleLabel?.font = .applicationFont(forTextStyle: .title1)
+        button.titleLabel?.font = .applicationFont(forTextStyle: .headline)
         button.setTitleColor(MenuViewController.configuration.palette.textOnPrimary, for: .normal)
         button.setTitle(item.title, for: .normal)
-        button.layer.cornerRadius = 5.0
+        button.layer.cornerRadius = 10.0
+        button.backgroundColor = MenuViewController.configuration.palette.primary
     }
 }
