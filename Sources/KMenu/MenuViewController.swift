@@ -112,7 +112,7 @@ class MenuViewController: UIViewController {
             button.contentEdgeInsets = UIEdgeInsets(top: 10, left: -2, bottom: 10, right: 10)
             button.addTarget(self, action: #selector(handleTapOn(_:)), for: .touchUpInside)
             userStackView.addArrangedSubview(button)
-            userStackView.setCustomSpacing(5, after: button)
+            userStackView.setCustomSpacing(0, after: button)
             button.update()
         }
     }
