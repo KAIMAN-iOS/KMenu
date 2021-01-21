@@ -97,7 +97,7 @@ extension AtaMenuItem: Menuable {
     public var displayType: MenuDisplayType {
         switch self {
         case .legalNotice, .contact: return .notice
-        case .messages, .myBookings: return .important
+        case .messages, .rideHistory: return .important
         case .alert: return .button
         default: return .default
         }
