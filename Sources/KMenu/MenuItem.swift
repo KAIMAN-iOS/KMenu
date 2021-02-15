@@ -52,6 +52,7 @@ public enum AtaMenuItem {
     case messages(selectionCompletion: (() -> Void))
     case rideFlows(selectionCompletion: (() -> Void))
     case expenseReport(selectionCompletion: (() -> Void))
+    case shareRide(selectionCompletion: (() -> Void))
     case legalNotice(appVersion: String, selectionCompletion: (() -> Void))
 }
 
@@ -71,6 +72,7 @@ extension AtaMenuItem: Menuable {
         case .group:                        return NSLocalizedString("group", bundle: Bundle.module, comment: "group")
         case .rideFlows:                    return NSLocalizedString("rideFlows", bundle: Bundle.module, comment: "rideFlows")
         case .expenseReport:                return NSLocalizedString("expenseReport", bundle: Bundle.module, comment: "rideFlows")
+        case .shareRide:                    return NSLocalizedString("shareRide", bundle: Bundle.module, comment: "shareRide")
         case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: Bundle.module, comment: "Legal notice") + " - " + version
         }
     }
@@ -90,14 +92,15 @@ extension AtaMenuItem: Menuable {
         case .group(let selectionCompletion):           return selectionCompletion
         case .legalNotice(_, let selectionCompletion):  return selectionCompletion
         case .rideFlows(let selectionCompletion):       return selectionCompletion
-        case .expenseReport(let selectionCompletion):       return selectionCompletion
+        case .shareRide(let selectionCompletion):       return selectionCompletion
+        case .expenseReport(let selectionCompletion):   return selectionCompletion
         }
     }
     
     public var displayType: MenuDisplayType {
         switch self {
         case .legalNotice, .contact: return .notice
-        case .messages, .rideHistory: return .important
+        case .messages, .rideHistory, .shareRide: return .important
         case .alert: return .button
         default: return .default
         }
