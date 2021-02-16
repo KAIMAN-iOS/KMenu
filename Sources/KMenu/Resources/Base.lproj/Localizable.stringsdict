@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NumberOfDrivers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@NbRDrivers@</string>
+		<key>NbRDrivers</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>u</string>
+			<key>one</key>
+			<string>1 chauffeur connecté</string>
+			<key>other</key>
+			<string>%d chauffeurs connectés</string>
+			<key>zero</key>
+			<string>Aucun chauffeur connecté</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

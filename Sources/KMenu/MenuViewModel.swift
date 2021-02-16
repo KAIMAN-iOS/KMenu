@@ -20,20 +20,44 @@ class MenuViewModel {
     
     typealias DataSource = UITableViewDiffableDataSource<Section, MenuItem>
     typealias SnapShot = NSDiffableDataSourceSnapshot<Section, MenuItem>
-    var currentSnapShot: SnapShot!
+    var dataSource: DataSource!
     func applySnapshot(in dataSource: DataSource, animatingDifferences: Bool = true) {
-        currentSnapShot = dataSource.snapshot()
-        currentSnapShot.deleteSections(currentSnapShot.sectionIdentifiers)
-        currentSnapShot.deleteAllItems()
-        currentSnapShot.appendSections([.main])
-        currentSnapShot.appendItems(items, toSection: .main)
+        self.dataSource = dataSource
+        var currentSnapShot = dataSource.snapshot()
+        if currentSnapShot.itemIdentifiers.count == 0 {
+            currentSnapShot.appendSections([.main])
+            currentSnapShot.appendItems(items, toSection: .main)
+        }
         dataSource.apply(currentSnapShot, animatingDifferences: animatingDifferences) {
             print("osiuvno")
         }
     }
     
+    var numberOfAvailableDrivers: Int = 0
+    func updateSOSButton(numberOfAvailableDrivers: Int) {
+        self.numberOfAvailableDrivers = numberOfAvailableDrivers
+        
+        guard let item = items.filter({ item -> Bool in
+                item.title == AtaMenuItem.alert(numberOfAvailableDrivers: 0, selectionCompletion: {}).title
+              }).first,
+              let index = items.firstIndex(of: item) else {
+            return
+        }
+        
+        let alert = MenuItem(AtaMenuItem.alert(numberOfAvailableDrivers: numberOfAvailableDrivers, selectionCompletion: item.completion))
+        items.removeAll(where: { $0 == item })
+        items.insert(alert, at: index)
+        
+        guard let source = dataSource,
+              var snap = dataSource?.snapshot() else { return }
+        snap.deleteItems([item])
+        snap.insertItems([alert], afterItem: snap.itemIdentifiers[index.advanced(by: -1)])
+        source.apply(snap, animatingDifferences: false, completion: nil)
+        return
+    }
+    
     func dataSource(for tableView: UITableView) -> DataSource {
-        let datasource = DataSource(tableView: tableView)  { (tableView, indexPath, model) -> UITableViewCell? in
+        let datasource = DataSource(tableView: tableView)  { [weak self]  (tableView, indexPath, model) -> UITableViewCell? in
             switch model.displayType {
             case .default:
                 guard let cell: MenuItemCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
@@ -54,6 +78,7 @@ class MenuViewModel {
                     return nil
                 }
                 cell.configure(model)
+                cell.updateSOSButton(numberOfAvailableDrivers: self?.numberOfAvailableDrivers ?? 0)
                 return cell
                 
             default: return nil

@@ -182,14 +182,24 @@
                                                     <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                     <state key="normal" title="Button"/>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="200" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooL-S5-tMh">
+                                                    <rect key="frame" x="114" y="19" width="272" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ooL-S5-tMh" secondAttribute="trailing" constant="8" id="2XB-nM-ink"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="rmd-Pm-KND" secondAttribute="bottom" constant="3" id="2iU-oB-AEz"/>
+                                                <constraint firstItem="ooL-S5-tMh" firstAttribute="leading" secondItem="rmd-Pm-KND" secondAttribute="trailing" constant="8" symbolic="YES" id="M6x-ax-yWJ"/>
                                                 <constraint firstItem="rmd-Pm-KND" firstAttribute="leading" secondItem="0lD-Xk-rOi" secondAttribute="leadingMargin" constant="20" id="bRL-gF-knB"/>
                                                 <constraint firstItem="rmd-Pm-KND" firstAttribute="top" secondItem="0lD-Xk-rOi" secondAttribute="topMargin" constant="3" id="kAa-gC-YGc"/>
+                                                <constraint firstItem="ooL-S5-tMh" firstAttribute="centerY" secondItem="rmd-Pm-KND" secondAttribute="centerY" id="pSw-mZ-06u"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="additionnalInformation" destination="ooL-S5-tMh" id="ZFG-Ek-gwp"/>
                                             <outlet property="button" destination="rmd-Pm-KND" id="bui-Qm-3wk"/>
                                         </connections>
                                     </tableViewCell>
@@ -249,7 +259,7 @@
         <image name="MyCloudATA" width="942" height="99"/>
         <image name="taxiDriver" width="83.5" height="82.5"/>
         <namedColor name="backgroundColor">
-            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
             <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

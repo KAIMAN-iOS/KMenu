@@ -7,6 +7,7 @@
 "licence" = "My documents";
 "favourites" = "Favourites";
 "alert" = "SOS Alert";
+"alert > configure" = "Alerte SOS > configurer le bouton";
 "group" = "Group";
 "expenseReport" = "Expense report";
 "bluetooth" = "Bluetooth";
@@ -18,3 +19,4 @@
 "myBookings" = "My bookings";
 "expenseReport" = "Expense report";
 "shareRide" = "Nouvelle course";
+"configure button" = "configurer le bouton";

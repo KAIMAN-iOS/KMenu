@@ -121,6 +121,10 @@ class MenuViewController: UIViewController {
         button.item.completion()
     }
     
+    func updateSOSButton(numberOfAvailableDrivers: Int) {
+        viewModel.updateSOSButton(numberOfAvailableDrivers: numberOfAvailableDrivers) 
+    }
+    
     func handleUserData() {
         guard let user = user else {
             userStackView.arrangedSubviews.forEach({ $0.isHidden = true })

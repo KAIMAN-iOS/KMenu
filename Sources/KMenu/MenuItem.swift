@@ -22,6 +22,7 @@ public struct MenuItem: Hashable, Equatable {
         return lhs.hashValue == rhs.hashValue
     }
     
+    let id = UUID()
     let title: String
     let completion: (() -> Void)
     var displayType: MenuDisplayType
@@ -33,7 +34,7 @@ public struct MenuItem: Hashable, Equatable {
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(title)
+        hasher.combine(id)
     }
 }
 
@@ -46,7 +47,7 @@ public enum AtaMenuItem {
     case contact(selectionCompletion: (() -> Void))
     case vehicle(selectionCompletion: (() -> Void))
     case favourites(selectionCompletion: (() -> Void))
-    case alert(selectionCompletion: (() -> Void))
+    case alert(numberOfAvailableDrivers: Int, selectionCompletion: (() -> Void))
     case group(selectionCompletion: (() -> Void))
     case parameters(selectionCompletion: (() -> Void))
     case messages(selectionCompletion: (() -> Void))
@@ -59,21 +60,21 @@ public enum AtaMenuItem {
 extension AtaMenuItem: Menuable {
     public var title: String {
         switch self {
-        case .user:                         return NSLocalizedString("user", bundle: Bundle.module, comment: "user")
-        case .parameters:                   return NSLocalizedString("parameters", bundle: Bundle.module, comment: "parameters")
-        case .messages:                     return NSLocalizedString("messages", bundle: Bundle.module, comment: "messages")
-        case .rideHistory:                  return NSLocalizedString("rideHistory", bundle: Bundle.module, comment: "rideHistory")
-        case .myBookings:                   return NSLocalizedString("myBookings", bundle: Bundle.module, comment: "myBookings")
-        case .terms:                        return NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")
-        case .contact:                      return NSLocalizedString("contact", bundle: Bundle.module, comment: "contact")
-        case .vehicle:                      return NSLocalizedString("vehicle", bundle: Bundle.module, comment: "vehicle")
-        case .favourites:                   return NSLocalizedString("favourites", bundle: Bundle.module, comment: "favourites")
-        case .alert:                        return NSLocalizedString("alert", bundle: Bundle.module, comment: "alert")
-        case .group:                        return NSLocalizedString("group", bundle: Bundle.module, comment: "group")
-        case .rideFlows:                    return NSLocalizedString("rideFlows", bundle: Bundle.module, comment: "rideFlows")
-        case .expenseReport:                return NSLocalizedString("expenseReport", bundle: Bundle.module, comment: "rideFlows")
-        case .shareRide:                    return NSLocalizedString("shareRide", bundle: Bundle.module, comment: "shareRide")
-        case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: Bundle.module, comment: "Legal notice") + " - " + version
+        case .user:                         return NSLocalizedString("user", bundle: .module, comment: "user")
+        case .parameters:                   return NSLocalizedString("parameters", bundle: .module, comment: "parameters")
+        case .messages:                     return NSLocalizedString("messages", bundle: .module, comment: "messages")
+        case .rideHistory:                  return NSLocalizedString("rideHistory", bundle: .module, comment: "rideHistory")
+        case .myBookings:                   return NSLocalizedString("myBookings", bundle: .module, comment: "myBookings")
+        case .terms:                        return NSLocalizedString("terms", bundle: .module, comment: "terms")
+        case .contact:                      return NSLocalizedString("contact", bundle: .module, comment: "contact")
+        case .vehicle:                      return NSLocalizedString("vehicle", bundle: .module, comment: "vehicle")
+        case .favourites:                   return NSLocalizedString("favourites", bundle: .module, comment: "favourites")
+        case .group:                        return NSLocalizedString("group", bundle: .module, comment: "group")
+        case .rideFlows:                    return NSLocalizedString("rideFlows", bundle: .module, comment: "rideFlows")
+        case .expenseReport:                return NSLocalizedString("expenseReport", bundle: .module, comment: "rideFlows")
+        case .shareRide:                    return NSLocalizedString("shareRide", bundle: .module, comment: "shareRide")
+        case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: .module, comment: "Legal notice") + " - " + version
+        case .alert(let nbDrivers, _):      return NSLocalizedString(nbDrivers > 0 ? "alert" : "alert > configure", bundle: .module, comment: "Legal notice")
         }
     }
     
@@ -88,7 +89,7 @@ extension AtaMenuItem: Menuable {
         case .vehicle(let selectionCompletion):         return selectionCompletion
         case .messages(let selectionCompletion):        return selectionCompletion
         case .favourites(let selectionCompletion):      return selectionCompletion
-        case .alert(let selectionCompletion):           return selectionCompletion
+        case .alert(_, let selectionCompletion):        return selectionCompletion
         case .group(let selectionCompletion):           return selectionCompletion
         case .legalNotice(_, let selectionCompletion):  return selectionCompletion
         case .rideFlows(let selectionCompletion):       return selectionCompletion

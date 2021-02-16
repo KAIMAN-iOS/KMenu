@@ -51,6 +51,10 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
         settings.usingSpringWithDamping = 0.9
         return settings
     }
+    
+    public func updateSOSButton(numberOfAvailableDrivers: Int) {
+        menuController.updateSOSButton(numberOfAvailableDrivers: numberOfAvailableDrivers)
+    }
 }
 
 extension String {
