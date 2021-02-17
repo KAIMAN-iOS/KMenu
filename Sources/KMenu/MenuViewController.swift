@@ -121,8 +121,8 @@ class MenuViewController: UIViewController {
         button.item.completion()
     }
     
-    func updateSOSButton(numberOfAvailableDrivers: Int) {
-        viewModel.updateSOSButton(numberOfAvailableDrivers: numberOfAvailableDrivers) 
+    func updateSOSButton(alertGroupCreated: Bool, numberOfAvailableDrivers: Int) {
+        viewModel.updateSOSButton(alertGroupCreated: alertGroupCreated, numberOfAvailableDrivers: numberOfAvailableDrivers) 
     }
     
     func handleUserData() {

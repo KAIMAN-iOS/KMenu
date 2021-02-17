@@ -31,17 +31,19 @@ class MenuButtonCell: UITableViewCell {
             configure()
         }
     }
+    var alertGroupCreated: Bool = false
 
     func configure(_ item: MenuItem) {
         self.item = item
     }
     
-    func updateSOSButton(numberOfAvailableDrivers: Int) {
+    func updateSOSButton(alertGroupCreated: Bool, numberOfAvailableDrivers: Int) {
+        self.alertGroupCreated = alertGroupCreated
         self.numberOfAvailableDrivers = numberOfAvailableDrivers
     }
     
     private func configure() {
-        guard numberOfAvailableDrivers > 0 else {
+        guard alertGroupCreated else {
             button.setTitle(item.title.uppercased(), for: .normal)
             button.backgroundColor = MenuViewController.configuration.palette.inactive
             additionnalInformation.text = ""

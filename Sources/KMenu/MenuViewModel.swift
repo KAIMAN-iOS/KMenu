@@ -34,17 +34,19 @@ class MenuViewModel {
     }
     
     var numberOfAvailableDrivers: Int = 0
-    func updateSOSButton(numberOfAvailableDrivers: Int) {
+    var alertGroupCreated: Bool = false
+    func updateSOSButton(alertGroupCreated: Bool, numberOfAvailableDrivers: Int) {
         
         guard let item = items.filter({ item -> Bool in
-                item.title == AtaMenuItem.alert(numberOfAvailableDrivers: self.numberOfAvailableDrivers, selectionCompletion: {}).title
+            item.id == AtaMenuItem.alert(alertGroupCreated: alertGroupCreated, numberOfAvailableDrivers: self.numberOfAvailableDrivers, selectionCompletion: {}).id
               }).first,
               let index = items.firstIndex(of: item) else {
             return
         }
         self.numberOfAvailableDrivers = numberOfAvailableDrivers
+        self.alertGroupCreated = alertGroupCreated
         
-        let alert = MenuItem(AtaMenuItem.alert(numberOfAvailableDrivers: numberOfAvailableDrivers, selectionCompletion: item.completion))
+        let alert = MenuItem(AtaMenuItem.alert(alertGroupCreated: alertGroupCreated, numberOfAvailableDrivers: numberOfAvailableDrivers, selectionCompletion: item.completion))
         items.removeAll(where: { $0 == item })
         items.insert(alert, at: index)
         
@@ -78,7 +80,7 @@ class MenuViewModel {
                     return nil
                 }
                 cell.configure(model)
-                cell.updateSOSButton(numberOfAvailableDrivers: self?.numberOfAvailableDrivers ?? 0)
+                cell.updateSOSButton(alertGroupCreated: self?.alertGroupCreated ?? false, numberOfAvailableDrivers: self?.numberOfAvailableDrivers ?? 0)
                 return cell
                 
             default: return nil

@@ -12,6 +12,7 @@ public enum MenuDisplayType {
 }
 
 public protocol Menuable {
+    var id: String { get }
     var title: String { get  }
     var completion: (() -> Void) { get }
     var displayType: MenuDisplayType { get }
@@ -22,12 +23,13 @@ public struct MenuItem: Hashable, Equatable {
         return lhs.hashValue == rhs.hashValue
     }
     
-    let id = UUID()
+    let id: String
     let title: String
     let completion: (() -> Void)
     var displayType: MenuDisplayType
     
     public init(_ item: Menuable) {
+        self.id = item.id
         self.title = item.title
         self.completion = item.completion
         self.displayType = item.displayType
@@ -47,7 +49,7 @@ public enum AtaMenuItem {
     case contact(selectionCompletion: (() -> Void))
     case vehicle(selectionCompletion: (() -> Void))
     case favourites(selectionCompletion: (() -> Void))
-    case alert(numberOfAvailableDrivers: Int, selectionCompletion: (() -> Void))
+    case alert(alertGroupCreated: Bool, numberOfAvailableDrivers: Int, selectionCompletion: (() -> Void))
     case group(selectionCompletion: (() -> Void))
     case parameters(selectionCompletion: (() -> Void))
     case messages(selectionCompletion: (() -> Void))
@@ -58,6 +60,26 @@ public enum AtaMenuItem {
 }
 
 extension AtaMenuItem: Menuable {
+    public var id: String {
+        switch self {
+        case .user: return "user"
+        case .rideHistory: return "rideHistory"
+        case .myBookings: return "myBookings"
+        case .terms: return "terms"
+        case .contact: return "contact"
+        case .vehicle: return "vehicle"
+        case .favourites: return "favourites"
+        case .alert: return "alert"
+        case .group: return "group"
+        case .parameters: return "parameters"
+        case .messages: return "messages"
+        case .rideFlows: return "rideFlows"
+        case .expenseReport: return "expenseReport"
+        case .shareRide: return "shareRide"
+        case .legalNotice: return "legalNotice"
+        }
+    }
+    
     public var title: String {
         switch self {
         case .user:                         return NSLocalizedString("user", bundle: .module, comment: "user")
@@ -74,7 +96,8 @@ extension AtaMenuItem: Menuable {
         case .expenseReport:                return NSLocalizedString("expenseReport", bundle: .module, comment: "rideFlows")
         case .shareRide:                    return NSLocalizedString("shareRide", bundle: .module, comment: "shareRide")
         case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: .module, comment: "Legal notice") + " - " + version
-        case .alert(let nbDrivers, _):      return NSLocalizedString(nbDrivers > 0 ? "alert" : "alert > configure", bundle: .module, comment: "Legal notice")
+        case .alert(let created, _, _):
+            return NSLocalizedString(created ? "alert" : "alert > configure", bundle: .module, comment: "Legal notice")
         }
     }
     
@@ -89,7 +112,7 @@ extension AtaMenuItem: Menuable {
         case .vehicle(let selectionCompletion):         return selectionCompletion
         case .messages(let selectionCompletion):        return selectionCompletion
         case .favourites(let selectionCompletion):      return selectionCompletion
-        case .alert(_, let selectionCompletion):        return selectionCompletion
+        case .alert(_, _, let selectionCompletion):     return selectionCompletion
         case .group(let selectionCompletion):           return selectionCompletion
         case .legalNotice(_, let selectionCompletion):  return selectionCompletion
         case .rideFlows(let selectionCompletion):       return selectionCompletion

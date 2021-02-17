@@ -52,8 +52,8 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
         return settings
     }
     
-    public func updateSOSButton(numberOfAvailableDrivers: Int) {
-        menuController.updateSOSButton(numberOfAvailableDrivers: numberOfAvailableDrivers)
+    public func updateSOSButton(alertGroupCreated: Bool, numberOfAvailableDrivers: Int) {
+        menuController.updateSOSButton(alertGroupCreated: alertGroupCreated, numberOfAvailableDrivers: numberOfAvailableDrivers)
     }
 }
 
