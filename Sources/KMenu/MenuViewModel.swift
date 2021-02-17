@@ -35,14 +35,14 @@ class MenuViewModel {
     
     var numberOfAvailableDrivers: Int = 0
     func updateSOSButton(numberOfAvailableDrivers: Int) {
-        self.numberOfAvailableDrivers = numberOfAvailableDrivers
         
         guard let item = items.filter({ item -> Bool in
-                item.title == AtaMenuItem.alert(numberOfAvailableDrivers: 0, selectionCompletion: {}).title
+                item.title == AtaMenuItem.alert(numberOfAvailableDrivers: self.numberOfAvailableDrivers, selectionCompletion: {}).title
               }).first,
               let index = items.firstIndex(of: item) else {
             return
         }
+        self.numberOfAvailableDrivers = numberOfAvailableDrivers
         
         let alert = MenuItem(AtaMenuItem.alert(numberOfAvailableDrivers: numberOfAvailableDrivers, selectionCompletion: item.completion))
         items.removeAll(where: { $0 == item })
