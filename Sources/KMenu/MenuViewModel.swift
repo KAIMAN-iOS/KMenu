@@ -79,8 +79,8 @@ class MenuViewModel {
                 guard let cell: MenuButtonCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
                     return nil
                 }
-                cell.configure(model)
                 cell.updateSOSButton(alertGroupCreated: self?.alertGroupCreated ?? false, numberOfAvailableDrivers: self?.numberOfAvailableDrivers ?? 0)
+                cell.configure(model)
                 return cell
                 
             default: return nil

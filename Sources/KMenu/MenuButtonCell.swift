@@ -8,6 +8,7 @@
 import UIKit
 import FontExtension
 import Ampersand
+import NSAttributedStringBuilder
 
 class MenuButtonCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!  {
@@ -26,11 +27,7 @@ class MenuButtonCell: UITableViewCell {
             configure()
         }
     }
-    var numberOfAvailableDrivers: Int = 0  {
-        didSet {
-            configure()
-        }
-    }
+    var numberOfAvailableDrivers: Int = 0
     var alertGroupCreated: Bool = false
 
     func configure(_ item: MenuItem) {
@@ -49,12 +46,28 @@ class MenuButtonCell: UITableViewCell {
             additionnalInformation.text = ""
             return
         }
-        // button
-        button.setTitle(item.title, for: .normal)
+        additionnalInformation.text = ""
         button.backgroundColor = MenuViewController.configuration.palette.primary
-        // additionnal
-        let formatString : String = NSLocalizedString("NumberOfDrivers", bundle: .module, comment: "NumberOfDrivers")
-        let resultString : String = String.localizedStringWithFormat(formatString, numberOfAvailableDrivers)
-        additionnalInformation.set(text: resultString, for: .caption1, textColor: MenuViewController.configuration.palette.inactive)
+        // button
+        let titles = item.title.split(separator: "#")
+        guard titles.count == 2 else {
+            button.setTitle(item.title, for: .normal)
+            return
+        }
+        let sos = String(titles[0])
+        let members = String(titles[1])
+        button.titleLabel?.numberOfLines = 2
+        button.setAttributedTitle(NSAttributedString {
+            AText(sos)
+                .font(.applicationFont(forTextStyle: .headline))
+                .foregroundColor(MenuViewController.configuration.palette.textOnPrimary)
+            
+            LineBreak()
+                .font(.applicationFont(ofSize: 0))
+            
+            AText(members)
+                .font(.applicationFont(forTextStyle: .caption2))
+                .foregroundColor(MenuViewController.configuration.palette.textOnPrimary)
+        }, for: .normal)
     }
 }

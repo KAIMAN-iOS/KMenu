@@ -96,8 +96,15 @@ extension AtaMenuItem: Menuable {
         case .expenseReport:                return NSLocalizedString("expenseReport", bundle: .module, comment: "rideFlows")
         case .shareRide:                    return NSLocalizedString("shareRide", bundle: .module, comment: "shareRide")
         case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: .module, comment: "Legal notice") + " - " + version
-        case .alert(let created, _, _):
-            return NSLocalizedString(created ? "alert" : "alert > configure", bundle: .module, comment: "Legal notice")
+        case .alert(let created, let numberOfAvailableDrivers, _):
+            guard created == true else {
+                return NSLocalizedString("alert > configure", bundle: .module, comment: "alert > configure")
+            }
+            let formatString : String = NSLocalizedString("NumberOfDrivers", bundle: .module, comment: "NumberOfDrivers")
+            let resultString : String = String.localizedStringWithFormat(formatString, numberOfAvailableDrivers)
+            return String(format: "%@#%@",
+                          NSLocalizedString("alert", bundle: .module, comment: "alert"),
+                          resultString)
         }
     }
     
