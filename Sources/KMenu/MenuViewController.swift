@@ -136,7 +136,7 @@ class MenuViewController: UIViewController {
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.inactive
         icon.image = user.picture ?? UIImage(named: "taxiDriver", in: .module, with: nil)
-        name.set(text: user.username, for: .title1, textColor: .white)
+        name.set(text: user.username, for: .title2, textColor: .white)
     }
     
     @IBAction func showUser() {
