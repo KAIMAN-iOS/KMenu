@@ -9,7 +9,7 @@
 "alert" = "SOS Alert";
 "alert > configure" = "Alerte SOS > configurer le bouton";
 "group" = "Group";
-"expenseReport" = "Expense report";
+"expenseReport" = "Scan de document";
 "bluetooth" = "Bluetooth";
 "rideFlows" = "Ride flows";
 "diagnosis" = "Diagnosis";
@@ -17,6 +17,5 @@
 "parameters" = "Parameters";
 "messages" = "Messages";
 "myBookings" = "My bookings";
-"expenseReport" = "Expense report";
 "shareRide" = "Nouvelle course";
 "configure button" = "configurer le bouton";

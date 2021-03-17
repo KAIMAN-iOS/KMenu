@@ -12,7 +12,6 @@ import ATAConfiguration
 
 public protocol UserDataDisplayable {
     var username: String { get }
-    var licence: String? { get }
     var picture: UIImage? { get }
     var completion: (() -> Void) { get }
 }
