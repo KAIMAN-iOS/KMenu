@@ -21,7 +21,7 @@ class ItemButton: UIButton {
         super.init(frame: .zero)
         titleLabel?.font = .applicationFont(forTextStyle: .title3)
         contentHorizontalAlignment = .left
-        setTitleColor(MenuViewController.configuration.palette.textOnPrimary, for: .normal)
+        setTitleColor(MenuViewController.configuration.palette.textOnDark, for: .normal)
         setTitleColor(MenuViewController.configuration.palette.placeholder, for: .highlighted)
         setTitleColor(MenuViewController.configuration.palette.placeholder, for: .selected)
         setTitle(item.title, for: .normal)
@@ -96,6 +96,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
+        view.backgroundColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
         SideMenuManager.default.leftMenuNavigationController?.sideMenuDelegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadImportantItems()
@@ -103,7 +104,6 @@ class MenuViewController: UIViewController {
         viewModel.applySnapshot(in: dataSource)
         handleUserData()
         tableView.tableFooterView = UIView()
-        view.backgroundColor = MenuViewController.configuration.palette.mainTexts
     }
     
     func loadImportantItems() {
