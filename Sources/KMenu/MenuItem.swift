@@ -43,8 +43,8 @@ public struct MenuItem: Hashable, Equatable {
 /// ATA specific menu items
 public enum AtaMenuItem {
     case user(selectionCompletion: (() -> Void))
-    case rideHistory(selectionCompletion: (() -> Void))
-    case myBookings(selectionCompletion: (() -> Void))
+    case rideHistory(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
+    case myBookings(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case terms(selectionCompletion: (() -> Void))
     case contact(selectionCompletion: (() -> Void))
     case vehicle(selectionCompletion: (() -> Void))
@@ -52,7 +52,7 @@ public enum AtaMenuItem {
     case alert(alertGroupCreated: Bool, numberOfAvailableDrivers: Int, selectionCompletion: (() -> Void))
     case group(selectionCompletion: (() -> Void))
     case parameters(selectionCompletion: (() -> Void))
-    case messages(selectionCompletion: (() -> Void))
+    case messages(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case rideFlows(selectionCompletion: (() -> Void))
     case expenseReport(selectionCompletion: (() -> Void))
     case shareRide(selectionCompletion: (() -> Void))
@@ -111,13 +111,13 @@ extension AtaMenuItem: Menuable {
     public var completion: (() -> Void) {
         switch self {
         case .user(let selectionCompletion):            return selectionCompletion
-        case .myBookings(let selectionCompletion):      return selectionCompletion
+        case .myBookings(_, let selectionCompletion):      return selectionCompletion
         case .parameters(let selectionCompletion):      return selectionCompletion
-        case .rideHistory(let selectionCompletion):     return selectionCompletion
+        case .rideHistory(_, let selectionCompletion):     return selectionCompletion
         case .terms(let selectionCompletion):           return selectionCompletion
         case .contact(let selectionCompletion):         return selectionCompletion
         case .vehicle(let selectionCompletion):         return selectionCompletion
-        case .messages(let selectionCompletion):        return selectionCompletion
+        case .messages(_, let selectionCompletion):        return selectionCompletion
         case .favourites(let selectionCompletion):      return selectionCompletion
         case .alert(_, _, let selectionCompletion):     return selectionCompletion
         case .group(let selectionCompletion):           return selectionCompletion
@@ -131,7 +131,10 @@ extension AtaMenuItem: Menuable {
     public var displayType: MenuDisplayType {
         switch self {
         case .legalNotice, .contact: return .notice
-        case .messages, .rideHistory, .shareRide: return .important
+        case .shareRide: return .important
+        case .messages(let displayType, _): return displayType
+        case .rideHistory(let displayType, _): return displayType
+        case .myBookings(let displayType, _): return displayType
         case .alert: return .button
         default: return .default
         }
