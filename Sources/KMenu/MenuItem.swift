@@ -47,6 +47,7 @@ public enum AtaMenuItem {
     case myBookings(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case terms(selectionCompletion: (() -> Void))
     case contact(selectionCompletion: (() -> Void))
+    case paymentMethod(selectionCompletion: (() -> Void))
     case vehicle(selectionCompletion: (() -> Void))
     case favourites(selectionCompletion: (() -> Void))
     case alert(alertGroupCreated: Bool, numberOfAvailableDrivers: Int, selectionCompletion: (() -> Void))
@@ -56,6 +57,7 @@ public enum AtaMenuItem {
     case rideFlows(selectionCompletion: (() -> Void))
     case expenseReport(selectionCompletion: (() -> Void))
     case shareRide(selectionCompletion: (() -> Void))
+    case marketPlace(selectionCompletion: (() -> Void))
     case legalNotice(appVersion: String, selectionCompletion: (() -> Void))
 }
 
@@ -77,6 +79,8 @@ extension AtaMenuItem: Menuable {
         case .expenseReport: return "expenseReport"
         case .shareRide: return "shareRide"
         case .legalNotice: return "legalNotice"
+        case .marketPlace: return "marketPlace"
+        case .paymentMethod: return "paymentMethod"
         }
     }
     
@@ -94,7 +98,9 @@ extension AtaMenuItem: Menuable {
         case .group:                        return NSLocalizedString("group", bundle: .module, comment: "group")
         case .rideFlows:                    return NSLocalizedString("rideFlows", bundle: .module, comment: "rideFlows")
         case .expenseReport:                return NSLocalizedString("expenseReport", bundle: .module, comment: "rideFlows")
+        case .paymentMethod:                return NSLocalizedString("paymentMethod", bundle: .module, comment: "rideFlows")
         case .shareRide:                    return NSLocalizedString("shareRide", bundle: .module, comment: "shareRide")
+        case .marketPlace:                  return NSLocalizedString("marketPlace", bundle: .module, comment: "shareRide")
         case .legalNotice(let version, _):  return NSLocalizedString("Legal notice", bundle: .module, comment: "Legal notice") + " - " + version
         case .alert(let created, let numberOfAvailableDrivers, _):
             guard created == true else {
@@ -111,13 +117,13 @@ extension AtaMenuItem: Menuable {
     public var completion: (() -> Void) {
         switch self {
         case .user(let selectionCompletion):            return selectionCompletion
-        case .myBookings(_, let selectionCompletion):      return selectionCompletion
+        case .myBookings(_, let selectionCompletion):   return selectionCompletion
         case .parameters(let selectionCompletion):      return selectionCompletion
-        case .rideHistory(_, let selectionCompletion):     return selectionCompletion
+        case .rideHistory(_, let selectionCompletion):  return selectionCompletion
         case .terms(let selectionCompletion):           return selectionCompletion
         case .contact(let selectionCompletion):         return selectionCompletion
         case .vehicle(let selectionCompletion):         return selectionCompletion
-        case .messages(_, let selectionCompletion):        return selectionCompletion
+        case .messages(_, let selectionCompletion):     return selectionCompletion
         case .favourites(let selectionCompletion):      return selectionCompletion
         case .alert(_, _, let selectionCompletion):     return selectionCompletion
         case .group(let selectionCompletion):           return selectionCompletion
@@ -125,13 +131,15 @@ extension AtaMenuItem: Menuable {
         case .rideFlows(let selectionCompletion):       return selectionCompletion
         case .shareRide(let selectionCompletion):       return selectionCompletion
         case .expenseReport(let selectionCompletion):   return selectionCompletion
+        case .paymentMethod(let selectionCompletion):   return selectionCompletion
+        case .marketPlace(let selectionCompletion):     return selectionCompletion
         }
     }
     
     public var displayType: MenuDisplayType {
         switch self {
         case .legalNotice, .contact: return .notice
-        case .shareRide: return .important
+        case .shareRide, .marketPlace: return .important
         case .messages(let displayType, _): return displayType
         case .rideHistory(let displayType, _): return displayType
         case .myBookings(let displayType, _): return displayType
