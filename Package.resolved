@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
-          "version": "5.4.1"
+          "revision": "4d19ad82f80cc71ff829b941ded114c56f4f604c",
+          "version": "5.4.2"
         }
       },
       {
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/jerometonnelier/ATAConfiguration",
         "state": {
           "branch": "master",
-          "revision": "0c1bb6372ec4b9fca70ea96d406cfe958fd786fc",
+          "revision": "d4b2dbcc96550102fd5222bbfeebf62a6d72e60d",
           "version": null
         }
       },
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Minitour/EasyNotificationBadge",
         "state": {
           "branch": null,
-          "revision": "800a95d7dfc01dcf4c7d03e839fdbf101d9fcb6a",
-          "version": "1.2.3"
+          "revision": "2774998af193a396b1842c0727fe52c2bd217ae2",
+          "version": "1.2.5"
         }
       },
       {
@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/jerometonnelier/KExtensions",
         "state": {
           "branch": "master",
-          "revision": "e63748482c3ea6cda875559a600ee0047ba733ef",
+          "revision": "da55b7dc677e69f9decf078a682b0f2a002e4464",
           "version": null
         }
       },
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "ef122e4512e84020dca9d8f598408fdb38658946",
-          "version": "9.2.0"
+          "revision": "200016df418ed8dc70ba918d52c29634f434541c",
+          "version": "9.5.0"
         }
       },
       {
