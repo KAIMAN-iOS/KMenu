@@ -16,6 +16,12 @@ public protocol UserDataDisplayable {
     var completion: (() -> Void) { get }
 }
 
+public struct ATAMenuCoordinator {
+    public enum Mode {
+        case driver, passenger
+    }
+}
+
 public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
     public var menuImage: UIImage?  {
         didSet {
@@ -28,9 +34,11 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
                 rootViewController: UIViewController,
                 items: [MenuItem],
                 user: UserDataDisplayable,
+                bottomImage: UIImage? = nil,
+                mode: ATAMenuCoordinator.Mode = .driver,
                 conf: ATAConfiguration) {
         super.init(router: router)
-        menuController = MenuViewController.create(with: items, user: user, conf: conf)
+        menuController = MenuViewController.create(with: items, user: user, bottomImage: bottomImage, mode: mode, conf: conf)
         SideMenuManager.default.leftMenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
         SideMenuManager.default.addPanGestureToPresent(toView: router.navigationController.navigationBar)

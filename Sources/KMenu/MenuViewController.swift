@@ -52,13 +52,20 @@ class MenuViewController: UIViewController {
     static var configuration: ATAConfiguration!
     static func create(with items: [MenuItem],
                        user: UserDataDisplayable?,
+                       bottomImage: UIImage? = nil,
+                       mode: ATAMenuCoordinator.Mode = .driver,
                        conf: ATAConfiguration) -> MenuViewController {
         let ctrl: MenuViewController = UIStoryboard(name: "Menu", bundle: Bundle.module).instantiateViewController(identifier: "MenuViewController")
         ctrl.items = items
         ctrl.user = user
+        ctrl.mode = mode
+        if let image = bottomImage {
+            ctrl._bottomImage = image
+        }
         MenuViewController.configuration = conf
         return ctrl
     }
+    var mode: ATAMenuCoordinator.Mode!
     var user: UserDataDisplayable?
     var items: [MenuItem] = []  {
         didSet {
@@ -73,7 +80,15 @@ class MenuViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var bottomImage: UIImageView!
+    var _bottomImage: UIImage? = nil
+    @IBOutlet weak var bottomImage: UIImageView!  {
+        didSet {
+            if let image = _bottomImage {
+                bottomImage.image = image
+            }
+        }
+    }
+
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
@@ -85,7 +100,6 @@ class MenuViewController: UIViewController {
         }
     }
 
-    
     var statusFrameHidden: Bool = true
     override var prefersStatusBarHidden: Bool { statusFrameHidden }
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { .slide }
@@ -97,6 +111,7 @@ class MenuViewController: UIViewController {
             self.setNeedsStatusBarAppearanceUpdate()
         }
         view.backgroundColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
+        rating.isHidden = mode == .passenger
         SideMenuManager.default.leftMenuNavigationController?.sideMenuDelegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadImportantItems()
