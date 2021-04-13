@@ -257,6 +257,11 @@
             <point key="canvasLocation" x="534.78260869565224" y="168.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="d1s-U0-G5o">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="MyCloudATA" width="990" height="99"/>
         <image name="taxiDriver" width="83.5" height="82.5"/>

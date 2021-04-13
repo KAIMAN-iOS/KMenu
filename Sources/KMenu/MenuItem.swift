@@ -59,6 +59,7 @@ public enum AtaMenuItem {
     case shareRide(selectionCompletion: (() -> Void))
     case marketPlace(selectionCompletion: (() -> Void))
     case legalNotice(appVersion: String, selectionCompletion: (() -> Void))
+    case custom(title: String, displayType: MenuDisplayType, selectionCompletion: (() -> Void))
 }
 
 extension AtaMenuItem: Menuable {
@@ -81,6 +82,7 @@ extension AtaMenuItem: Menuable {
         case .legalNotice: return "legalNotice"
         case .marketPlace: return "marketPlace"
         case .paymentMethod: return "paymentMethod"
+        case .custom(let title, _, _): return title
         }
     }
     
@@ -111,6 +113,7 @@ extension AtaMenuItem: Menuable {
             return String(format: "%@#%@",
                           NSLocalizedString("alert", bundle: .module, comment: "alert"),
                           resultString)
+        case .custom(let title, _, _): return title
         }
     }
     
@@ -133,6 +136,7 @@ extension AtaMenuItem: Menuable {
         case .expenseReport(let selectionCompletion):   return selectionCompletion
         case .paymentMethod(let selectionCompletion):   return selectionCompletion
         case .marketPlace(let selectionCompletion):     return selectionCompletion
+        case .custom(_, _, let completion): return completion
         }
     }
     
@@ -144,6 +148,7 @@ extension AtaMenuItem: Menuable {
         case .rideHistory(let displayType, _): return displayType
         case .myBookings(let displayType, _): return displayType
         case .alert: return .button
+        case .custom(_, let display, _): return display
         default: return .default
         }
     }    
