@@ -5,7 +5,7 @@
 "contact" = "Assistance";
 "vehicle" = "Gestion véhicules";
 "licence" = "Mes documents";
-"favourites" = "Favoris";
+"favourites" = "Mes favoris";
 "alert" = "Alerte SOS";
 "alert > configure" = "Alerte SOS > configurer le bouton";
 "group" = "Groupes chauffeurs";
@@ -20,4 +20,4 @@
 "shareRide" = "Nouvelle course";
 "configure button" = "configurer le bouton";
 "marketPlace" = "Place de marché";
-"paymentMethod" = "Ma carte";
+"paymentMethod" = "Carte bancaire";
