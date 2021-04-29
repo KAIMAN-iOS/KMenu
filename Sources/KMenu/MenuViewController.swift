@@ -146,11 +146,9 @@ class MenuViewController: UIViewController {
             return
         }
         icon.layer.cornerRadius = icon.bounds.midX
-        icon.layer.borderWidth = 0.8
-        icon.layer.borderColor = UIColor.white.cgColor
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.inactive
-        icon.image = user.picture ?? UIImage(named: "taxiDriver", in: .module, with: nil)
+        icon.image = user.picture ?? UIImage(named: "passenger", in: .module, with: nil)
         name.set(text: user.username, for: .title2, textColor: .white)
     }
     
