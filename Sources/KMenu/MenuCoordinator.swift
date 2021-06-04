@@ -9,6 +9,7 @@ import UIKit
 import KCoordinatorKit
 import SideMenu
 import ATAConfiguration
+import Combine
 
 public protocol UserDataDisplayable {
     var username: String { get }
@@ -23,6 +24,7 @@ public struct ATAMenuCoordinator {
 }
 
 public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
+    public var userPublisher: PassthroughSubject<UserDataDisplayable, Never> = PassthroughSubject<UserDataDisplayable, Never>()
     public var menuImage: UIImage?  {
         didSet {
             guard let image = menuImage else { return }
@@ -39,10 +41,20 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
                 conf: ATAConfiguration) {
         super.init(router: router)
         menuController = MenuViewController.create(with: items, user: user, bottomImage: bottomImage, mode: mode, conf: conf)
+        makeRx()
         SideMenuManager.default.leftMenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()
         SideMenuManager.default.addPanGestureToPresent(toView: router.navigationController.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: rootViewController.view)
+    }
+    
+    private var subscriptions = Set<AnyCancellable>()
+    private func makeRx() {
+        userPublisher
+            .sink { [weak self] user in
+                self?.menuController.update(user)
+            }
+            .store(in: &subscriptions)
     }
     
     private func makeSettings() -> SideMenuSettings {

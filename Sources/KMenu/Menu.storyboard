@@ -130,7 +130,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKs-Uh-r2h">
-                                                    <rect key="frame" x="40" y="8" width="354" height="54"/>
+                                                    <rect key="frame" x="36" y="8" width="358" height="54"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                                 <constraint firstItem="vKs-Uh-r2h" firstAttribute="trailing" secondItem="w1s-X9-nk6" secondAttribute="trailingMargin" id="A3d-8j-3Qu"/>
                                                 <constraint firstAttribute="bottom" secondItem="vKs-Uh-r2h" secondAttribute="bottom" constant="8" id="GH0-gZ-MLb"/>
                                                 <constraint firstItem="vKs-Uh-r2h" firstAttribute="top" secondItem="w1s-X9-nk6" secondAttribute="top" constant="8" id="OaB-JR-zMu"/>
-                                                <constraint firstItem="vKs-Uh-r2h" firstAttribute="leading" secondItem="w1s-X9-nk6" secondAttribute="leadingMargin" constant="20" id="Yjn-jT-yTg"/>
+                                                <constraint firstItem="vKs-Uh-r2h" firstAttribute="leading" secondItem="w1s-X9-nk6" secondAttribute="leadingMargin" constant="16" id="Yjn-jT-yTg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -155,7 +155,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHQ-Js-lpk">
-                                                    <rect key="frame" x="40" y="9" width="354" height="21"/>
+                                                    <rect key="frame" x="37" y="9" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="fHQ-Js-lpk" secondAttribute="bottom" constant="8" id="2id-ao-iyp"/>
                                                 <constraint firstAttribute="trailing" secondItem="fHQ-Js-lpk" secondAttribute="trailing" constant="20" symbolic="YES" id="9xG-Uc-jDB"/>
-                                                <constraint firstItem="fHQ-Js-lpk" firstAttribute="leading" secondItem="3kQ-2T-QjD" secondAttribute="leading" constant="40" id="HlH-QB-X3F"/>
+                                                <constraint firstItem="fHQ-Js-lpk" firstAttribute="leading" secondItem="3kQ-2T-QjD" secondAttribute="leading" constant="37" id="HlH-QB-X3F"/>
                                                 <constraint firstItem="fHQ-Js-lpk" firstAttribute="top" secondItem="3kQ-2T-QjD" secondAttribute="top" constant="9" id="rX3-vO-sVw"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -264,13 +264,13 @@
         </designable>
     </designables>
     <resources>
-        <image name="MyCloudATA" width="990" height="99"/>
+        <image name="MyCloudATA" width="942" height="99"/>
         <image name="passenger" width="346.5" height="345.5"/>
         <namedColor name="backgroundColor">
-            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
-            <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94509803921568625" green="0.67843137254901964" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

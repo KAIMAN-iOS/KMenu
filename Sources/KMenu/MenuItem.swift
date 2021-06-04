@@ -142,7 +142,7 @@ extension AtaMenuItem: Menuable {
     
     public var displayType: MenuDisplayType {
         switch self {
-        case .legalNotice, .contact: return .notice
+        case .parameters, .legalNotice, .contact: return .notice
         case .shareRide, .marketPlace: return .important
         case .messages(let displayType, _): return displayType
         case .rideHistory(let displayType, _): return displayType

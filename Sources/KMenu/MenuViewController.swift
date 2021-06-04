@@ -121,6 +121,13 @@ class MenuViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
+    func update(_ user: UserDataDisplayable) {
+        self.user = user
+        guard icon != nil else { return }
+        name.set(text: user.username, for: .title2, textColor: .white)
+        icon.image = user.picture ?? UIImage(named: "passenger", in: .module, with: nil)
+    }
+    
     func loadImportantItems() {
         items.filter({ $0.displayType == .important }).forEach { item in
             let button = ItemButton(item: item)
@@ -147,7 +154,8 @@ class MenuViewController: UIViewController {
         }
         icon.layer.cornerRadius = icon.bounds.midX
         icon.clipsToBounds = true
-        icon.backgroundColor = MenuViewController.configuration.palette.inactive
+        icon.backgroundColor = MenuViewController.configuration.palette.mainTexts
+        icon.tintColor = MenuViewController.configuration.palette.lightGray
         icon.image = user.picture ?? UIImage(named: "passenger", in: .module, with: nil)
         name.set(text: user.username, for: .title2, textColor: .white)
     }
