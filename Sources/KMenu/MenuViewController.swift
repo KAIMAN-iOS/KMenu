@@ -12,6 +12,7 @@ import LabelExtension
 import ATAConfiguration
 import Cosmos
 import Ampersand
+import Combine
 
 class ItemButton: UIButton {
     var item: MenuItem
@@ -103,6 +104,7 @@ class MenuViewController: UIViewController {
     var statusFrameHidden: Bool = true
     override var prefersStatusBarHidden: Bool { statusFrameHidden }
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { .slide }
+    private var subscriptions = Set<AnyCancellable>()
     
     lazy var dataSource = viewModel.dataSource(for: tableView)
     override func viewDidLoad() {
@@ -125,7 +127,11 @@ class MenuViewController: UIViewController {
         self.user = user
         guard icon != nil else { return }
         name.set(text: user.username, for: .title2, textColor: .white)
-        icon.image = user.picture ?? UIImage(named: "passenger", in: .module, with: nil)
+        user
+            .picture
+            .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .assign(to: \.image, on: icon)
+            .store(in: &subscriptions)
     }
     
     func loadImportantItems() {
@@ -156,7 +162,11 @@ class MenuViewController: UIViewController {
         icon.clipsToBounds = true
         icon.backgroundColor = MenuViewController.configuration.palette.mainTexts
         icon.tintColor = MenuViewController.configuration.palette.lightGray
-        icon.image = user.picture ?? UIImage(named: "passenger", in: .module, with: nil)
+        user
+            .picture
+            .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .assign(to: \.image, on: icon)
+            .store(in: &subscriptions)
         name.set(text: user.username, for: .title2, textColor: .white)
     }
     
