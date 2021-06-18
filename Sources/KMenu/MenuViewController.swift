@@ -127,9 +127,12 @@ class MenuViewController: UIViewController {
         self.user = user
         guard icon != nil else { return }
         name.set(text: user.username, for: .title2, textColor: .white)
+        subscriptions.removeAll()
         user
             .picture
+            .subscribe(on: DispatchQueue.global(qos: .background))
             .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .receive(on: DispatchQueue.main)
             .assign(to: \.image, on: icon)
             .store(in: &subscriptions)
     }
@@ -164,7 +167,9 @@ class MenuViewController: UIViewController {
         icon.tintColor = MenuViewController.configuration.palette.lightGray
         user
             .picture
+            .subscribe(on: DispatchQueue.global(qos: .background))
             .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .receive(on: DispatchQueue.main)
             .assign(to: \.image, on: icon)
             .store(in: &subscriptions)
         name.set(text: user.username, for: .title2, textColor: .white)
