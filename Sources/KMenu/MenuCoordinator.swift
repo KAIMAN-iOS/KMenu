@@ -74,6 +74,10 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
     public func updateSOSButton(alertGroupCreated: Bool, numberOfAvailableDrivers: Int) {
         menuController.updateSOSButton(alertGroupCreated: alertGroupCreated, numberOfAvailableDrivers: numberOfAvailableDrivers)
     }
+    
+    public func updateBadge(_ count: Int, for item: MenuItem) {
+        menuController.updateBadge(count, for: item)
+    }
 }
 
 extension String {

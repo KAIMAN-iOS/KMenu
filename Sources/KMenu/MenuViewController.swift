@@ -13,23 +13,56 @@ import ATAConfiguration
 import Cosmos
 import Ampersand
 import Combine
+import ATAViews
+
+class ImportantItem: UIStackView {
+    var item: MenuItem!
+    let button: ItemButton!
+    let badge = Badge()
+    init(item: MenuItem) {
+        self.item = item
+        button = ItemButton(item: item)
+        super.init(frame: .zero)
+        addArrangedSubview(button)
+        addArrangedSubview(badge)
+        axis = .horizontal
+        distribution = .fill
+        alignment = .center
+        spacing = 8
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(_ count: Int) {
+        badge.update(count)
+    }
+}
 
 class ItemButton: UIButton {
     var item: MenuItem
+    var badge: BadgeHub!
     
     init(item: MenuItem) {
         self.item = item
         super.init(frame: .zero)
+        badge = ATABadgeView(view: self)
         titleLabel?.font = .applicationFont(forTextStyle: .title3)
         contentHorizontalAlignment = .left
         setTitleColor(MenuViewController.configuration.palette.textOnDark, for: .normal)
         setTitleColor(MenuViewController.configuration.palette.placeholder, for: .highlighted)
         setTitleColor(MenuViewController.configuration.palette.placeholder, for: .selected)
         setTitle(item.title, for: .normal)
+        setContentCompressionResistancePriority(.required, for: .horizontal)
+        setContentHuggingPriority(.required, for: .horizontal)
     }
     
-    func update() {
-//        titleLabel?.set(text: item.title, for: FontType.custom(.title2, traits: nil), textColor: MenuViewController.configuration.palette.textOnPrimary)
+    func update(_ count: Int) {
+        badge.setCount(count)
+        layoutIfNeeded()
+        badge.setCircleAtFrame(CGRect(origin: CGPoint(x: frame.width - 10, y: 0),
+                                      size: CGSize(width: 23, height: 23)))
     }
     
     required init?(coder: NSCoder) {
@@ -64,6 +97,8 @@ class MenuViewController: UIViewController {
             ctrl._bottomImage = image
         }
         MenuViewController.configuration = conf
+        ATABadgeView.circleBackgroundColor = conf.palette.primary
+        ATABadgeView.textColor = conf.palette.textOnPrimary
         return ctrl
     }
     var mode: ATAMenuCoordinator.Mode!
@@ -144,8 +179,18 @@ class MenuViewController: UIViewController {
             button.addTarget(self, action: #selector(handleTapOn(_:)), for: .touchUpInside)
             userStackView.addArrangedSubview(button)
             userStackView.setCustomSpacing(0, after: button)
-            button.update()
         }
+    }
+    
+    private var unreadCounts: [MenuItem: Int] = [:]
+    func updateBadge(_ count: Int, for item: MenuItem) {
+        unreadCounts[item] = count
+        guard userStackView != nil else { return }
+        userStackView
+            .arrangedSubviews
+            .compactMap({ $0 as? ItemButton })
+            .filter({ $0.item == item })
+            .first?.update(count)
     }
     
     @objc func handleTapOn(_ button: ItemButton) {
@@ -185,6 +230,9 @@ extension MenuViewController: SideMenuNavigationControllerDelegate {
         statusFrameHidden = true
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
+        }
+        unreadCounts.forEach { [weak self] item, count in
+            self?.updateBadge(count, for: item)
         }
     }
     

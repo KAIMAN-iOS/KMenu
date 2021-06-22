@@ -270,7 +270,7 @@
             <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
-            <color red="0.94509803921568625" green="0.67843137254901964" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
