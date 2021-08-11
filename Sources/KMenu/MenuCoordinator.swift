@@ -13,6 +13,7 @@ import Combine
 
 public protocol UserDataDisplayable {
     var username: String { get }
+    var rating: Double { get }
     var picture: CurrentValueSubject<UIImage?, Never> { get }
     var completion: (() -> Void) { get }
 }

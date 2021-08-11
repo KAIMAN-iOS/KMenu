@@ -162,6 +162,7 @@ class MenuViewController: UIViewController {
         self.user = user
         guard icon != nil else { return }
         name.set(text: user.username, for: .title2, textColor: .white)
+        rating.rating = user.rating
         subscriptions.removeAll()
         user
             .picture
@@ -218,6 +219,7 @@ class MenuViewController: UIViewController {
             .assign(to: \.image, on: icon)
             .store(in: &subscriptions)
         name.set(text: user.username, for: .title2, textColor: .white)
+        rating.rating = user.rating
     }
     
     @IBAction func showUser() {
