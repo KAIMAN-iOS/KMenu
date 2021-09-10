@@ -46,7 +46,7 @@ public enum AtaMenuItem {
     case rideHistory(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case myBookings(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case terms(selectionCompletion: (() -> Void))
-    case contact(selectionCompletion: (() -> Void))
+    case contact(displayType: MenuDisplayType, selectionCompletion: (() -> Void))
     case paymentMethod(selectionCompletion: (() -> Void))
     case vehicle(selectionCompletion: (() -> Void))
     case favourites(selectionCompletion: (() -> Void))
@@ -124,7 +124,7 @@ extension AtaMenuItem: Menuable {
         case .parameters(let selectionCompletion):      return selectionCompletion
         case .rideHistory(_, let selectionCompletion):  return selectionCompletion
         case .terms(let selectionCompletion):           return selectionCompletion
-        case .contact(let selectionCompletion):         return selectionCompletion
+        case .contact(_, let selectionCompletion):         return selectionCompletion
         case .vehicle(let selectionCompletion):         return selectionCompletion
         case .messages(_, let selectionCompletion):     return selectionCompletion
         case .favourites(let selectionCompletion):      return selectionCompletion
@@ -142,9 +142,10 @@ extension AtaMenuItem: Menuable {
     
     public var displayType: MenuDisplayType {
         switch self {
-        case .parameters, .legalNotice, .contact: return .notice
+        case .parameters, .legalNotice: return .notice
         case .shareRide, .marketPlace: return .important
         case .messages(let displayType, _): return displayType
+        case .contact(let displayType, _): return displayType
         case .rideHistory(let displayType, _): return displayType
         case .myBookings(let displayType, _): return displayType
         case .alert: return .button

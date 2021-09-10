@@ -5,7 +5,7 @@
 "contact" = "Assistance";
 "vehicle" = "Gestion véhicules";
 "licence" = "Mes documents";
-"favourites" = "Mes favoris";
+"favourites" = "Adresses favorites";
 "alert" = "Alerte SOS";
 "alert > configure" = "Alerte SOS > configurer le bouton";
 "group" = "Groupes chauffeurs";
@@ -21,3 +21,4 @@
 "configure button" = "configurer le bouton";
 "marketPlace" = "Place de marché";
 "paymentMethod" = "Carte bancaire";
+"edit profile" = "Éditer mon profil >";

@@ -55,14 +55,24 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-Wb-69f">
                                                         <rect key="frame" x="78" y="0.0" width="110.5" height="70"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" text="Nom Prénom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-7a-ENG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="23"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6C-fM-ee1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="0.0"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" ambiguous="YES" text="Nom Prénom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-7a-ENG">
+                                                                <rect key="frame" x="0.0" y="8" width="110.5" height="23"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                 <color key="textColor" name="selectedButtonColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1s-U0-G5o" customClass="CosmosView" customModule="Cosmos">
-                                                                <rect key="frame" x="0.0" y="31" width="110.5" height="39"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIW-dd-k4Q">
+                                                                <rect key="frame" x="0.0" y="39" width="110.5" height="7.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                                                                <color key="textColor" name="lightGray"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d1s-U0-G5o" customClass="CosmosView" customModule="Cosmos">
+                                                                <rect key="frame" x="0.0" y="54.5" width="110.5" height="7.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -88,8 +98,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBi-AR-FWg">
+                                                                <rect key="frame" x="0.0" y="70" width="110.5" height="0.0"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="DBi-AR-FWg" firstAttribute="height" secondItem="o6C-fM-ee1" secondAttribute="height" id="DOx-uf-4Rd"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -246,6 +263,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomImage" destination="tMb-Ci-lUc" id="fff-fb-6VP"/>
+                        <outlet property="editLabel" destination="rIW-dd-k4Q" id="beT-zW-xyJ"/>
                         <outlet property="icon" destination="glW-Q3-ypz" id="Mlw-SB-xSj"/>
                         <outlet property="name" destination="5pv-7a-ENG" id="fPM-3P-O41"/>
                         <outlet property="rating" destination="d1s-U0-G5o" id="Hkd-Ge-7X9"/>
@@ -267,16 +285,19 @@
         <image name="MyCloudATA" width="942" height="99"/>
         <image name="passenger" width="346.5" height="345.5"/>
         <namedColor name="backgroundColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="button">
             <color red="0.94900000095367432" green="0.68199998140335083" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="lightGray">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textOnPrimary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

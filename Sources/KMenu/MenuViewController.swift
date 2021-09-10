@@ -125,7 +125,23 @@ class MenuViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var editLabel: UILabel!  {
+        didSet {
+            editLabel.set(text: "edit profile".bundleLocale(), for: .caption2, textColor: MenuViewController.configuration.palette.textOnDark)
+        }
+    }
+
+    @IBOutlet weak var icon: UIImageView!  {
+        didSet {
+            icon.roundedCorners = true
+            icon.layer.borderWidth = 1.0
+            icon.layer.borderColor = MenuViewController.configuration.palette.secondary.cgColor
+            icon.clipsToBounds = true
+            icon.backgroundColor = MenuViewController.configuration.palette.secondary
+            icon.tintColor = MenuViewController.configuration.palette.lightGray
+        }
+    }
+
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userStackView: UIStackView!
     @IBOutlet weak var rating: CosmosView!  {
@@ -149,6 +165,8 @@ class MenuViewController: UIViewController {
         }
         view.backgroundColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
         rating.isHidden = mode == .passenger
+        editLabel.isHidden = mode != .passenger
+        (editLabel.superview as? UIStackView)?.spacing = mode == .passenger ? -2 : userStackView.spacing
         SideMenuManager.default.leftMenuNavigationController?.sideMenuDelegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadImportantItems()
@@ -207,10 +225,6 @@ class MenuViewController: UIViewController {
             userStackView.arrangedSubviews.forEach({ $0.isHidden = true })
             return
         }
-        icon.layer.cornerRadius = icon.bounds.midX
-        icon.clipsToBounds = true
-        icon.backgroundColor = MenuViewController.configuration.palette.mainTexts
-        icon.tintColor = MenuViewController.configuration.palette.lightGray
         user
             .picture
             .subscribe(on: DispatchQueue.global(qos: .background))
