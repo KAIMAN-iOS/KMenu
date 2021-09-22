@@ -185,7 +185,7 @@ class MenuViewController: UIViewController {
         user
             .picture
             .subscribe(on: DispatchQueue.global(qos: .background))
-            .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .replaceEmpty(with: user.image ?? UIImage(named: "passenger", in: .module, with: nil))
             .receive(on: DispatchQueue.main)
             .assign(to: \.image, on: icon)
             .store(in: &subscriptions)
@@ -228,7 +228,7 @@ class MenuViewController: UIViewController {
         user
             .picture
             .subscribe(on: DispatchQueue.global(qos: .background))
-            .replaceEmpty(with: UIImage(named: "passenger", in: .module, with: nil))
+            .replaceEmpty(with: user.image ?? UIImage(named: "passenger", in: .module, with: nil))
             .receive(on: DispatchQueue.main)
             .assign(to: \.image, on: icon)
             .store(in: &subscriptions)

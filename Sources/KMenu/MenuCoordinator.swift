@@ -16,6 +16,7 @@ public protocol UserDataDisplayable {
     var rating: Double { get }
     var picture: CurrentValueSubject<UIImage?, Never> { get }
     var completion: (() -> Void) { get }
+    var image: UIImage? { get }
 }
 
 public struct ATAMenuCoordinator {
