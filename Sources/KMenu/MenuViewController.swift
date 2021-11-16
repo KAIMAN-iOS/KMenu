@@ -247,6 +247,9 @@ extension MenuViewController: SideMenuNavigationControllerDelegate {
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
+    }
+    
+    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
         unreadCounts.forEach { [weak self] item, count in
             self?.updateBadge(count, for: item)
         }
