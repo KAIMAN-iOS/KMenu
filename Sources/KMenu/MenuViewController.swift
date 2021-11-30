@@ -163,7 +163,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
-        view.backgroundColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
+        view.backgroundColor = UIColor(named: "secondary")! // #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
         rating.isHidden = mode == .passenger
         editLabel.isHidden = mode != .passenger
         (editLabel.superview as? UIStackView)?.spacing = mode == .passenger ? -2 : userStackView.spacing
