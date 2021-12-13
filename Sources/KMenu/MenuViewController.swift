@@ -133,6 +133,7 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var icon: UIImageView!  {
         didSet {
+            icon.image = UIImage(named: "passenger", in: .module, with: nil)!
             icon.roundedCorners = true
             icon.layer.borderWidth = 1.0
             icon.layer.borderColor = MenuViewController.configuration.palette.secondary.cgColor
@@ -225,13 +226,15 @@ class MenuViewController: UIViewController {
             userStackView.arrangedSubviews.forEach({ $0.isHidden = true })
             return
         }
-        user
-            .picture
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .replaceEmpty(with: user.image ?? UIImage(named: "passenger", in: .module, with: nil))
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.image, on: icon)
-            .store(in: &subscriptions)
+        if user.picture.value != nil {
+            user
+                .picture
+                .subscribe(on: DispatchQueue.global(qos: .background))
+                .replaceEmpty(with: user.image ?? UIImage(named: "passenger", in: .module, with: nil))
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.image, on: icon)
+                .store(in: &subscriptions)
+        }
         name.set(text: user.username, for: .title2, textColor: .white)
         rating.rating = user.rating
     }
