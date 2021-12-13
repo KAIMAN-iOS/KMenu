@@ -59,14 +59,14 @@ class MenuButtonCell: UITableViewCell {
         button.titleLabel?.numberOfLines = 2
         button.setAttributedTitle(NSAttributedString {
             AText(sos)
-                .font(.applicationFont(forTextStyle: .headline))
+                .font(.applicationFont(forTextStyle: .title3))
                 .foregroundColor(MenuViewController.configuration.palette.textOnPrimary)
             
             LineBreak()
                 .font(.applicationFont(ofSize: 0))
             
             AText(members)
-                .font(.applicationFont(forTextStyle: .caption2))
+                .font(.applicationFont(forTextStyle: .subheadline))
                 .foregroundColor(MenuViewController.configuration.palette.textOnPrimary)
         }, for: .normal)
     }
