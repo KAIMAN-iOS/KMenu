@@ -66,7 +66,7 @@ class MenuButtonCell: UITableViewCell {
                 .font(.applicationFont(ofSize: 0))
             
             AText(members)
-                .font(.applicationFont(forTextStyle: .subheadline))
+                .font(.applicationFont(forTextStyle: .caption2))
                 .foregroundColor(MenuViewController.configuration.palette.textOnPrimary)
         }, for: .normal)
     }
