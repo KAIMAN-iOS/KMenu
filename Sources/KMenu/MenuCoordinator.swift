@@ -25,6 +25,16 @@ public struct ATAMenuCoordinator {
     }
 }
 
+public protocol MenuDisplayable {
+    func didShowMenu()
+    func didHideMenu()
+}
+
+extension MenuDisplayable {
+    func didShowMenu() {}
+    func didHideMenu() {}
+}
+
 public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
     public var userPublisher: PassthroughSubject<UserDataDisplayable, Never> = PassthroughSubject<UserDataDisplayable, Never>()
     public var menuImage: UIImage?  {
@@ -40,9 +50,11 @@ public class MenuCoordinator<DeepLink>: Coordinator<DeepLink> {
                 user: UserDataDisplayable,
                 bottomImage: UIImage? = nil,
                 mode: ATAMenuCoordinator.Mode = .driver,
+                displayDelegate: MenuDisplayable? = nil,
                 conf: ATAConfiguration) {
         super.init(router: router)
         menuController = MenuViewController.create(with: items, user: user, bottomImage: bottomImage, mode: mode, conf: conf)
+        menuController.displayDelegate = displayDelegate
         makeRx()
         SideMenuManager.default.leftMenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.leftMenuNavigationController?.settings = makeSettings()

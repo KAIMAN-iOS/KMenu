@@ -83,6 +83,7 @@ extension UINavigationController {
 }
     
 class MenuViewController: UIViewController {
+    var displayDelegate: MenuDisplayable?
     static var configuration: ATAConfiguration!
     static func create(with items: [MenuItem],
                        user: UserDataDisplayable?,
@@ -259,6 +260,7 @@ extension MenuViewController: SideMenuNavigationControllerDelegate {
         unreadCounts.forEach { [weak self] item, count in
             self?.updateBadge(count, for: item)
         }
+        displayDelegate?.didShowMenu()
     }
     
     func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
@@ -266,6 +268,7 @@ extension MenuViewController: SideMenuNavigationControllerDelegate {
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
+        displayDelegate?.didHideMenu()
     }
 }
 

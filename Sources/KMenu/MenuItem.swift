@@ -20,7 +20,7 @@ public protocol Menuable {
 
 public struct MenuItem: Hashable, Equatable {
     public static func == (lhs: MenuItem, rhs: MenuItem) -> Bool {
-        return lhs.hashValue == rhs.hashValue
+        return lhs.id == rhs.id && lhs.title == rhs.title
     }
     
     let id: String
