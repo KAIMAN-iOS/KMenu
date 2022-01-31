@@ -9,7 +9,7 @@
 "alert" = "Alerte SOS";
 "alert > configure" = "Alerte SOS > configurer le bouton";
 "group" = "Groupes chauffeurs";
-"expenseReport" = "Scan de document";
+"expenseReport" = "Scan de documents";
 "bluetooth" = "Bluetooth";
 "rideFlows" = "Flux LE.TAXI, ...";
 "diagnosis" = "Diagnostique";
