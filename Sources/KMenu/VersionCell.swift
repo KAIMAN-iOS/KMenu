@@ -21,5 +21,6 @@ class VersionCell: UITableViewCell {
     
     func configure(_ version: String) {
         label.set(text: version, for: .caption2, textColor: MenuViewController.configuration.palette.mainTexts)
+        contentView.backgroundColor = MenuViewController.configuration.palette.background
     }
 }

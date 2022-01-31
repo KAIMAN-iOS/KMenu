@@ -153,7 +153,11 @@ class MenuViewController: UIViewController {
             rating.settings = settings
         }
     }
-
+    @IBOutlet weak var footerView: UIView! {
+        didSet {
+            footerView.backgroundColor = MenuViewController.configuration.palette.background
+        }
+    }
     var statusFrameHidden: Bool = true
     override var prefersStatusBarHidden: Bool { statusFrameHidden }
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { .slide }
@@ -177,6 +181,7 @@ class MenuViewController: UIViewController {
         viewModel.applySnapshot(in: dataSource)
         handleUserData()
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = MenuViewController.configuration.palette.background
     }
     
     func update(_ user: UserDataDisplayable) {

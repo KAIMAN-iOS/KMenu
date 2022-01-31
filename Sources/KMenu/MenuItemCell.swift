@@ -17,6 +17,7 @@ class MenuItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         addDefaultSelectedBackground(MenuViewController.configuration.palette.mainTexts.withAlphaComponent(0.5))
+        contentView.backgroundColor = MenuViewController.configuration.palette.background
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

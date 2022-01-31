@@ -3,7 +3,7 @@
 "rideHistory" = "Mes courses";
 "terms" = "Conditions générales";
 "contact" = "Assistance";
-"vehicle" = "Gestion véhicules";
+"vehicle" = "Mes véhicules";
 "licence" = "Mes documents";
 "favourites" = "Adresses favorites";
 "alert" = "Alerte SOS";
@@ -11,7 +11,7 @@
 "group" = "Groupes chauffeurs";
 "expenseReport" = "Scan de document";
 "bluetooth" = "Bluetooth";
-"rideFlows" = "Flux de courses";
+"rideFlows" = "Flux LE.TAXI, ...";
 "diagnosis" = "Diagnostique";
 "Legal notice" = "Mentions légales";
 "parameters" = "Paramètres";
@@ -23,3 +23,5 @@
 "paymentMethod" = "Carte bancaire";
 "edit profile" = "Éditer mon profil >";
 "shareApp" = "Partager l'application";
+"option title" = "Plus d'options";
+"option subtitle" = "Gérer votre activité sur myCloudTaxi.com";

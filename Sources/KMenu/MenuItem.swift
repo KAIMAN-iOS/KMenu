@@ -8,7 +8,7 @@
 import UIKit
 
 public enum MenuDisplayType {
-    case `default`, important, notice, button
+    case `default`, important, notice, button, options
 }
 
 public protocol Menuable {

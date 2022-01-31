@@ -83,6 +83,13 @@ class MenuViewModel {
                 cell.configure(model)
                 return cell
                 
+            case .options:
+                guard let cell: MenuOptionCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
+                    return nil
+                }
+                cell.configure()
+                return cell
+                
             default: return nil
             }
             

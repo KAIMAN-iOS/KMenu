@@ -21,7 +21,7 @@ class MenuButtonCell: UITableViewCell {
         }
     }
 
-    @IBOutlet weak var additionnalInformation: UILabel!
+//    @IBOutlet weak var additionnalInformation: UILabel!
     var item: MenuItem!  {
         didSet {
             configure()
@@ -40,13 +40,14 @@ class MenuButtonCell: UITableViewCell {
     }
     
     private func configure() {
+        contentView.backgroundColor = MenuViewController.configuration.palette.background
         guard alertGroupCreated else {
             button.setTitle(item.title.uppercased(), for: .normal)
             button.backgroundColor = MenuViewController.configuration.palette.inactive
-            additionnalInformation.text = ""
+//            additionnalInformation.text = ""
             return
         }
-        additionnalInformation.text = ""
+//        additionnalInformation.text = ""
         button.backgroundColor = MenuViewController.configuration.palette.primary
         // button
         let titles = item.title.split(separator: "#")
