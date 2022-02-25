@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -243,6 +242,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="uKc-AZ-dPs" secondAttribute="bottom" constant="3" id="9Zw-hr-wHY"/>
                                                 <constraint firstItem="uKc-AZ-dPs" firstAttribute="leading" secondItem="0lD-Xk-rOi" secondAttribute="leading" constant="30" id="Aej-Rw-crV"/>
                                                 <constraint firstItem="uKc-AZ-dPs" firstAttribute="top" secondItem="0lD-Xk-rOi" secondAttribute="top" constant="3" id="KRY-Ct-gER"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uKc-AZ-dPs" secondAttribute="trailing" constant="8" id="o9j-6o-Sl6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -336,7 +336,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="MyCloudATA" width="990" height="99"/>
+        <image name="MyCloudATA" width="942" height="115.5"/>
         <image name="arrow.right.circle" catalog="system" width="128" height="121"/>
         <image name="passenger" width="346.5" height="345.5"/>
         <namedColor name="backgroundColor">
