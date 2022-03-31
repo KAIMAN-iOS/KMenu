@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -196,10 +196,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKc-AZ-dPs">
-                                                    <rect key="frame" x="30" y="3" width="63.5" height="46"/>
+                                                    <rect key="frame" x="30" y="3" width="354" height="46"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Myn-by-FQC">
-                                                            <rect key="frame" x="8" y="8" width="47.5" height="30"/>
+                                                            <rect key="frame" x="8" y="8" width="338" height="30"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="o4B-RR-MS3">
                                                                     <rect key="frame" x="0.0" y="0.0" width="47.5" height="16.5"/>
@@ -242,7 +242,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="uKc-AZ-dPs" secondAttribute="bottom" constant="3" id="9Zw-hr-wHY"/>
                                                 <constraint firstItem="uKc-AZ-dPs" firstAttribute="leading" secondItem="0lD-Xk-rOi" secondAttribute="leading" constant="30" id="Aej-Rw-crV"/>
                                                 <constraint firstItem="uKc-AZ-dPs" firstAttribute="top" secondItem="0lD-Xk-rOi" secondAttribute="top" constant="3" id="KRY-Ct-gER"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uKc-AZ-dPs" secondAttribute="trailing" constant="8" id="o9j-6o-Sl6"/>
+                                                <constraint firstAttribute="trailing" secondItem="uKc-AZ-dPs" secondAttribute="trailing" constant="30" id="o9j-6o-Sl6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -259,14 +259,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7X-cv-pJX">
-                                                    <rect key="frame" x="30" y="4" width="290" height="50"/>
+                                                    <rect key="frame" x="30" y="4" width="354" height="50"/>
                                                     <color key="backgroundColor" name="button"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="D7X-cv-pJX" firstAttribute="width" secondItem="G2B-vq-acD" secondAttribute="width" multiplier="0.7" id="Lbc-nd-z7f"/>
+                                                <constraint firstAttribute="trailing" secondItem="D7X-cv-pJX" secondAttribute="trailing" constant="30" id="FPw-Y1-gCB"/>
                                                 <constraint firstItem="D7X-cv-pJX" firstAttribute="top" secondItem="G2B-vq-acD" secondAttribute="top" constant="4" id="MEa-cP-vjG"/>
                                                 <constraint firstAttribute="bottom" secondItem="D7X-cv-pJX" secondAttribute="bottom" constant="4" id="YBL-F9-jct"/>
                                                 <constraint firstItem="D7X-cv-pJX" firstAttribute="leading" secondItem="G2B-vq-acD" secondAttribute="leading" constant="30" id="oVZ-Jf-dka"/>
